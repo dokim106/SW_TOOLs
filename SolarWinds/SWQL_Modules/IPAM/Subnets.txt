@@ -1,0 +1,27 @@
+--SELECT
+--  -- Min and Max of the third octet where the first, second, and fourth octets are the same and the CIDR is the same
+--  MIN(ThirdOctet) AS StartRange,
+--  MAX(ThirdOctet) AS EndRange,
+--  CONCAT(FirstOctet, '.', SecondOctet, '.', 'XX', '.', FourthOctet, ' / ', CIDR) AS GroupedSubnet
+--FROM (
+--SELECT
+--    SUBSTRING(Address, 1, CHARINDEX('.', Address) - 1) AS FirstOctet,
+--    SUBSTRING(Address, CHARINDEX('.', Address) + 1, CHARINDEX('.', Address, CHARINDEX('.', Address) + 1) - CHARINDEX('.', Address) - 1) AS SecondOctet,
+--    SUBSTRING(Address, CHARINDEX('.', Address, CHARINDEX('.', Address) + 1) + 1, CHARINDEX('.', Address, CHARINDEX('.', Address, CHARINDEX('.', Address) + 1) + 1) - CHARINDEX('.', Address, CHARINDEX('.', Address) + 1) - 1) AS ThirdOctet,
+--SUBSTRING(Address, CHARINDEX('.', Address, CHARINDEX('.', Address, CHARINDEX('.', Address) + 1) + 1) + 1, LENgth(Address)) AS FourthOctet,
+--    CIDR
+--  FROM
+--    IPAM.Subnet
+--  WHERE
+--    grouptype = '8'
+--) AS SubnetComponents
+--GROUP BY
+--  FirstOctet, SecondOctet, FourthOctet, CIDR
+--HAVING
+--  COUNT(*) > 1 -- Ensures there is more than one subnet in the range
+
+-- Counts the total number of subnets managed in IPAM
+SELECT
+    COUNT(*) AS [Total Subnets]  -- The total count of all subnets
+FROM
+    IPAM.Subnet;

@@ -1,0 +1,153 @@
+function Connect-SolarWinds {
+    
+    <#
+    .SYNOPSIS
+        Connects to the SolarWinds Information Service (SWIS) using specified credentials.
+    
+    .DESCRIPTION
+        This function establishes a connection to the SolarWinds Information Service (SWIS) on a given SolarWinds server. 
+        The function takes the hostname of the server, a username, and a password as input parameters. If the connection fails, 
+        it will throw an error and return null.
+    
+    .PARAMETER Hostname
+        The hostname or IP address of the SolarWinds server.
+    
+    .PARAMETER Username
+        The username used to authenticate the connection to the SolarWinds server.
+    
+    .PARAMETER Password
+        The password associated with the provided username for authentication.
+    
+    .EXAMPLE
+        PS> Connect-SolarWinds -Hostname "solarwinds-server1" -Username "admin" -Password "<password>"
+    
+        Connects to the SolarWinds server 'solarwinds-server1' using the credentials 'admin' and 'password'.
+    
+    .EXAMPLE
+        PS> $connection = Connect-SolarWinds -Hostname "<SolarWinds server>" -Username "<username>" -Password "<password>"
+    
+        Stores the connection object to the SolarWinds server '<SolarWinds server>' in the variable $connection.
+    
+    .NOTES
+        Author: Ryan Woolsey
+        Last Edit: 9-20-2024
+        Version: 1.1
+        Keywords: SolarWinds, OrionSDK, PowerShell, SWIS
+    
+    .LINK
+        https://github.com/solarwinds/OrionSDK/wiki/PowerShell
+    
+    .REQUIRES
+        # Requires -Version 5.1
+        # Requires -Modules OrionSDK
+    
+    #>
+
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true, 
+                   HelpMessage = "Enter the hostname or IP address of the SolarWinds server.")]
+        [string]$Hostname,
+
+        [Parameter(Mandatory = $true, 
+                   HelpMessage = "Enter the username for authentication.")]
+        [string]$Username,
+
+        [Parameter(Mandatory = $true, 
+                   HelpMessage = "Enter the password for the provided username.")]
+        [string]$Password
+    )
+
+    # Build the connection parameters for SWIS
+    $swisParams = @{
+        Hostname = $Hostname
+        UserName = $Username
+        Password = $Password
+        ErrorAction = 'Stop'  # Stops the function if an error occurs
+    }
+
+    # Attempt to connect to SWIS
+    try {
+        # The Connect-Swis cmdlet is used to establish a connection to the SolarWinds server
+        return Connect-Swis @swisParams
+    }
+    catch {
+        # If the connection fails, output an error message with the reason for the failure
+        Write-Error "Failed to connect to SWIS: $_"
+        return $null
+    }
+}
+
+function Get-NCMSetting {
+    param (
+        [string]$SearchTerm = '*',  # Allow wildcards to filter settings
+        [string]$defaultValue = $null,  # Default value if setting is not found
+        [int]$engineId = 2  # Default engine ID
+    )
+
+    # All available settings (from your JSON list)
+    $ncmSettings = @(
+        'HideCommunityStrings', 'HideUsernames', 'ConnectivityLevel', 'IncludeInInventory', 'ConcurrentNodes',
+        'ExtendedVLANsInventory', 'DisableInventoryLookup', 'SMTPServer', 'SMTPPort', 'SMTPSSLPort', 'SMTPUseAuth',
+        'SMTPAuthPassword', 'SMTPAuthUserName', 'SMTPUseSSL', 'SMTPTimeout', 'ConfigTypes', 'ConcurrentDownloads',
+        'SNMPConfigTransferTimeout', 'MinimumConfigLength', 'ComparisonOutputWidth', 'FullSideBySideComparison',
+        'NumberOfLinesComparison', 'NumberOfLines', 'EnableConfigMirror', 'KeepMultipleRevisions', 'ConfigArchiveDirectory',
+        'ConfigMirrorTemplate', 'DefaultEmailFromName', 'DefaultEmailReplyAddress', 'DefaultEmailSubject', 'DefaultEmailTo',
+        'DefaultEmailCC', 'DefaultEmailBCC', 'ICMPTimeout', 'ICMPData', 'SNMPTimeout', 'SNMPRetries', 'TFTPAutoRetriveIP',
+        'TFTPServerAddress', 'TFTPRootDir', 'UseThirdPartyTftpServer', 'SCPAutoRetriveIP', 'UseThirdPartySCPServer',
+        'SCPServerAddress', 'SCPRootDir', 'SCPUserName', 'SCPPassword', 'GlobalUsername', 'GlobalPassword',
+        'GlobalEnableLevel', 'GlobalEnablePassword', 'GlobalTelnetPort', 'GlobalSSHPort', 'GlobalExecProtocol',
+        'GlobalConfigRequestProtocol', 'GlobalConfigTransferProtocol', 'SortOnAllColumns', 'SortOnSingleColumn',
+        'EnableCache', 'CachingTime', 'RTNEnabled', 'RTNUseUserDevice', 'RTNIncludeNotification',
+        'RTNLimitDownloadOperations', 'RTNUserName', 'RTNPassword', 'RTNUserLevelName', 'RTNUserLevelPassword',
+        'RTNUserLevelEnableLevel', 'RTNUserLevelEnablePassword', 'RTNConfigType', 'RTNLastConfig', 'RTNBaselineConfig',
+        'DisableRTNEmail', 'RTNInHTMLFormat', 'RTNWithDiffs', 'RTNEmailFromName', 'RTNEmailReplyAddress', 'RTNEmailSubject',
+        'RTNEmailTo', 'RTNEmailCC', 'RTNEmailBCC', 'FTSIndexStatus', 'FTSConfigScanPeriod', 'FTSIndexingDelay',
+        'FTSIsEnabled', 'FTSIndexCatalogPath', 'JobNotification', 'IsFallBackEnabled', 'NCMEosSchedulingEnabled',
+        'NCMEosStartTime', 'ComplianceMgmtOnlyForAdmins', 'NodesSyncID', 'NodesSyncID71', 'NetworkShareUserName',
+        'NetworkShareUserPassword', 'NetworkShareUseImpersonation', 'NetworkShareUseImpersonationPerEngine',
+        'VulnAlertScoreThreshold', 'BypassApprovalForAutoRemediationScript', 'PolicyViolationLevel1', 'PolicyViolationLevel2',
+        'PolicyViolationLevel3', 'NCMJobHangTimeout', 'NCMJobSchedulingTimeout', 'NCMJobRunJobTimeout', 'FirmwareStorageLocation',
+        'FirmwareNetworkShareUserName', 'FirmwareNetworkShareUserPassword', 'MaxNumberOfFirmwareOperations',
+        'BinaryConfigStorageFolder', 'BinaryConfigStorageUserName', 'BinaryConfigStoragePassword', 'SkipAddingNodes',
+        'AclDataCollectorCompleted', 'AclNexusDataCollectorCompleted', 'DeviceTemplatesMigrationCompleted',
+        'IsLegacyBaselineMigrated', 'IsBinaryConfigHashUpdated', 'PaloAltoXmlTemplateMigrationTimeStamp',
+        'PaloAltoXmlTemplateMigrationProcessed', 'PaloAltoDataCollectorCompleted', 'EnableNewNcmConfigSummary',
+        'ConfigChangeApprovalEnabled', 'ApprovalMode', 'DbMaintJobOneTimeInventoryJobsMigrated', 'DbMaintJobAuditMigrated'
+    )
+
+    # Filter the settings based on the wildcard search term
+    $filteredSettings = $ncmSettings -like $SearchTerm
+
+    # Initialize a table to store results
+    $resultsTable = @()
+
+    foreach ($setting in $filteredSettings) {
+        # Invoke the SWIS verb to get the setting value
+        $result = Invoke-SwisVerb $swis 'Cirrus.Settings' 'GetSetting' @($setting, $defaultValue, $engineId)
+
+        # Check if the result is nil
+        if ($result.nil -ne $true) {
+            $settingValue = $result.InnerXml
+        } else {
+            $settingValue = 'null'
+        }
+
+        # Add the setting and its value to the results table
+        $resultsTable += [pscustomobject]@{
+            'Setting' = $setting
+            'Value' = $settingValue
+        }
+    }
+
+    # Return the results table
+    return $resultsTable
+}
+
+$Username = 'L1SENG\RWoolsey'
+$Password = 'ExamplePass1!'
+$MPE = 'orion.example.net'
+
+$swis = Connect-SolarWinds -Hostname $MPE -Username $Username -Password $Password
+
+Get-NCMSetting -SearchTerm "*Server*"

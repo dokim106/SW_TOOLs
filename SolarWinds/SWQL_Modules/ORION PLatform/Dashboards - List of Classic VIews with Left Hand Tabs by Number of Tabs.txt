@@ -1,0 +1,5 @@
+SELECT ViewGroupName, COUNT(*) AS [Number of Tabs]
+FROM Orion.Views
+WHERE ViewGroupName IS NOT NULL AND ViewGroup IS NOT NULL
+GROUP BY ViewGroupName
+ORDER BY [Number of Tabs] DESC

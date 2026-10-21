@@ -1,0 +1,1 @@
+UPDATE dbo.Websites SET SSLEnabled=1 WHERE WebsiteID=1

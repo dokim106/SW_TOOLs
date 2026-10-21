@@ -1,0 +1,20 @@
+-- Select the device template name, vendor, and the total number of associated nodes per template
+
+SELECT 
+  dt.TemplateName,              -- Name of the device template
+  n.Vendor,                     -- Vendor of the device (from Orion.Nodes)
+  COUNT(dt.ID) AS [Total]       -- Total count of nodes associated with each template
+
+FROM 
+  Cli.DeviceTemplates AS dt      -- DeviceTemplates table (source for device templates)
+  
+  -- Inner join to associate nodes with templates
+  JOIN Cli.DeviceTemplatesNodes AS dtn ON dtn.TemplateID = dt.ID
+  
+  -- Left join with the Nodes table to include vendor information
+  LEFT JOIN Orion.Nodes AS n ON dtn.NodeID = n.NodeID
+  
+-- Grouping by template name and vendor to calculate the count of nodes per template and vendor
+GROUP BY dt.TemplateName, n.Vendor
+
+-- End of query

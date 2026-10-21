@@ -1,0 +1,34 @@
+SELECT 'Loopback' AS [Interface Type], COUNT(*) AS [Count]
+FROM Orion.NPM.Interfaces
+WHERE Caption LIKE '%loopback%'
+
+UNION ALL
+
+(SELECT 'Null' AS [Interface Type], COUNT(*) AS [Count]
+FROM Orion.NPM.Interfaces
+WHERE Caption LIKE '%null%')
+
+UNION ALL
+
+(SELECT 'Unrouted' AS [Interface Type], COUNT(*) AS [Count]
+FROM Orion.NPM.Interfaces
+WHERE Caption LIKE '%unrouted%')
+
+UNION ALL
+
+(SELECT 'Uncontrolled' AS [Interface Type], COUNT(*) AS [Count]
+FROM Orion.NPM.Interfaces
+WHERE Caption LIKE '%uncontrolled%')
+
+UNION ALL
+
+(SELECT 'Windows' AS [Interface Type], COUNT(*) AS [Count]
+FROM Orion.NPM.Interfaces
+WHERE Caption LIKE '%0000%')
+
+UNION ALL
+
+(SELECT 'POTS' AS [Interface Type], COUNT(*) AS [Count]
+FROM Orion.NPM.Interfaces
+WHERE Caption LIKE '%pots%')
+

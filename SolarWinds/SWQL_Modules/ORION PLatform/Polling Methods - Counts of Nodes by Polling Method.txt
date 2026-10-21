@@ -1,0 +1,39 @@
+SELECT 'Agent' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'Agent'
+
+UNION ALL
+
+(SELECT 'ICMP' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'ICMP')
+
+UNION ALL
+
+(SELECT 'SNMP v1' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'SNMP' AND SNMPVersion = '1')
+
+UNION ALL
+
+(SELECT 'SNMP v2' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'SNMP' AND SNMPVersion = '2')
+
+UNION ALL
+
+(SELECT 'SNMP v3' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'SNMP' AND SNMPVersion = '3')
+
+UNION ALL
+
+(SELECT 'Total SNMP' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'SNMP')
+
+UNION ALL
+
+(SELECT 'WMI' AS [Polling Method], COUNT(*) AS [Number of Nodes]
+FROM Orion.Nodes
+WHERE ObjectSubType = 'WMI')

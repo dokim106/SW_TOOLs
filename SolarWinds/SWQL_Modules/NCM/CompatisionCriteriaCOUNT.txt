@@ -1,0 +1,22 @@
+SELECT
+  CASE
+    WHEN IsBlock = true THEN 'Block (multi-line)'
+    ELSE 'Single-line'
+  END AS RuleType,
+  CASE
+    WHEN IsBlock = true THEN 'Patterns spanning multiple lines'
+    ELSE 'Patterns matching single lines only'
+  END AS TypeDescription,
+  COUNT(*) AS RuleCount
+FROM Cirrus.CompareRegExs
+WHERE Enabled = true
+GROUP BY
+  CASE
+    WHEN IsBlock = true THEN 'Block (multi-line)'
+    ELSE 'Single-line'
+  END,
+  CASE
+    WHEN IsBlock = true THEN 'Patterns spanning multiple lines'
+    ELSE 'Patterns matching single lines only'
+  END
+ORDER BY RuleCount DESC

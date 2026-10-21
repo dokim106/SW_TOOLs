@@ -1,0 +1,10 @@
+SELECT 
+    a.Name AS [Application Name],  -- Clear label for application name
+    COUNT(DISTINCT a.NodeID) AS [Nodes Count],  -- Counts unique nodes for each application
+    COUNT(DISTINCT a.Components.ComponentID) AS [Components Count],  -- Counts unique components for each application
+    MAX(a.Template.Name) AS [Template Name]
+FROM 
+    Orion.APM.Application AS a
+GROUP BY 
+    a.ApplicationTemplateID, 
+    a.Name

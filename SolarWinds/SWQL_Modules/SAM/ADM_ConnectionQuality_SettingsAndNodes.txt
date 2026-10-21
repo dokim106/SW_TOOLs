@@ -1,0 +1,32 @@
+-- This query retrieves settings related to ADM polling and lists nodes associated with Dependency TCP Statistics
+SELECT 
+    b.description AS [Metric],  -- Renamed for clarity
+    b.value AS [Value]          -- Renamed for clarity
+FROM 
+    (
+        -- Subquery to fetch specific ADM settings
+        SELECT 
+            Description, 
+            Value
+        FROM 
+            Orion.Setting
+        WHERE 
+            Name IN ('ADM.PollingConnectionQualityEnabled', 'ADM.PollingEnabled')
+
+        UNION ALL 
+
+        -- Subquery to fetch distinct node captions related to TCP statistics
+        (
+        SELECT 
+            CONCAT('  ', n.Caption) AS Description, -- Use whitespace for formatting, if needed
+            '' AS Value  -- Placeholder to match the structure of the first part of the union
+        FROM 
+            Orion.Nodes n
+        JOIN 
+            Orion.APM.DependencyTcpStatistics tcps ON n.NodeID = tcps.NodeToNodeLinkID
+        WHERE 
+            tcps.NodeToNodeLinkID IS NOT NULL  -- Ensures valid node connections are considered
+        )
+    ) AS b
+ORDER BY 
+    b.value DESC;  -- Orders the results based on value, although this might not be meaningful given the second part has empty values

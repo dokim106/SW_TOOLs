@@ -1,0 +1,13 @@
+-- This query retrieves details about API pollers, including the name, node assigned, status, 
+-- and the count of monitored values for each unique combination of poller name, node, and status.
+SELECT 
+    api.StatusDescription AS [Status],
+    api.DisplayName AS [Poller Name],
+    api.node.Caption AS [Assigned To],
+    COUNT(api.RequestDetails.ID) AS [Monitored Values Count]  -- Counts the number of request details per group
+FROM 
+    Orion.APIPoller.ApiPoller AS api
+GROUP BY
+    api.DisplayName,  -- Grouping by the display name of the poller
+    api.node.Caption,  -- Grouping by the node caption to which the poller is assigned
+    api.StatusDescription  -- Grouping by the status description of the poller

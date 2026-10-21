@@ -1,0 +1,8 @@
+select top 1 '=== Device Pollers ===' as [c], null as [v] from orion.nodes
+
+union all (SELECT 'Total' as [c], count(*) as [v] FROM Orion.DeviceStudio.Pollers)
+union all (SELECT 'Enabled' as [c], count(*) as [v] FROM Orion.DeviceStudio.Pollers where enabled=1)
+
+union all (SELECT concat('By: ',Author,' (',p.Technology.Name,')') as [c], count(*) as [v] FROM Orion.DeviceStudio.Pollers p group by author, p.Technology.Name)
+
+

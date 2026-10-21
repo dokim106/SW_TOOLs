@@ -1,0 +1,10 @@
+SELECT DisplayName AS [Name], 
+Owner, 
+CASE
+WHEN Private = 'True' THEN 'Private'
+WHEN Private = 'False' THEN 'Public'
+END AS [Public or Private]
+FROM Orion.Dashboards.Instances
+WHERE IsActive = 'True'
+AND Owner != '_system'
+ORDER BY Owner, DisplayName

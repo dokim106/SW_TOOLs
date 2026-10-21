@@ -1,0 +1,2 @@
+SELECT UserName, RequestType, Script, ConfigType, Reboot, DateTime, Comments, RequestStatus, ApprovedBy, RunAt, NCMJobID, StatusChangeTime, ExecutionType, DisplayName
+FROM Cirrus.ApproveQueue

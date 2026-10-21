@@ -1,0 +1,11 @@
+select 
+case when AccountType=0 then 'Orion Service Account' 
+     when AccountType=1 then 'Local Orion' 
+     when AccountType=2 then 'AD Individual' 
+     when AccountType=3 then 'AD Group' 
+     when AccountType=6 then 'SAML' end as [Account Type]
+,concat(count(*),'') as [Count]
+from orion.Accounts
+where accounttype !=4
+--where AccountType in ('0','1','2','3','6') 
+group by accounttype 

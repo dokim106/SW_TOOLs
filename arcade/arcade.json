@@ -1,0 +1,12 @@
+{
+ "name": "arcade",
+ "title": "Arcade",
+ "rows": 7,
+ "order": [
+  "doom",
+  "2048"
+ ],
+ "default": "doom",
+ "dashboard_key": "arcade_cbc3544f",
+ "widget_key": "87df605e-0aa7-45fa-8dc7-f91f3fcedcb7"
+}

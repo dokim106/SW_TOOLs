@@ -1,0 +1,4 @@
+SELECT a.Title AS [Action Name], a.ActionTypeID AS [Action Type], a.Description, ac.Name AS [Alert Name]
+FROM Orion.Actions a
+JOIN Orion.AlertConfigurations ac ON a.Assignments.ParentID = ac.AlertID
+WHERE a.Enabled = 'False'

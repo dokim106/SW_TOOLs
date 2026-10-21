@@ -1,0 +1,25 @@
+SELECT
+    Replace(SettingID, '-', ' ') AS [Setting ID],  -- Column 1: Setting ID with hyphens replaced by spaces
+    Name,  -- Column 2: Name of the setting
+    CONCAT(ToString(CurrentValue), ' ', [Units]) AS [Current Value],  -- Column 3: Current value of the setting
+    CASE
+        WHEN CurrentValue = DefaultValue THEN 'Yes'  -- Column 4: If CurrentValue equals DefaultValue, show 'Yes'
+        ELSE CONCAT(TOSTRING(DefaultValue), ' ', [Units])  -- Otherwise, show DefaultValue
+    END AS [Default Value]
+
+FROM 
+    Orion.Settings
+
+WHERE 
+settingid IN (
+  'PolicyEngine-Retain Daily', 'SCM-Retain Daily',
+  'SCM-Retain Detail', 'SCM-Retain Hourly'
+)
+
+
+    AND (
+        settingid = 'PolicyEngine-Retain Daily'
+        OR settingid = 'SCM-Retain Daily'
+        OR settingid = 'SCM-Retain Detail'
+        OR settingid = 'SCM-Retain Hourly'
+    );  -- Filters specific setting IDs related to Policy Engine and SCM

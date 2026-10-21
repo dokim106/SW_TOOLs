@@ -1,0 +1,4 @@
+select 'Controllers' as [metric], isNULL(count(*),0) as [Value]from orion.Wireless.Controllers
+union all(select 'Access Points' as [c], isNULL(count(*),0) as [v] from orion.Wireless.AccessPoints )
+union all (select concat('    ',ap.DisplayName) as [c], concat(ap.Clients,' ') as [v]  from orion.Wireless.AccessPoints ap)
+union all(select 'Rouge APs' as [c], isNULL(count(*),0) as [v] from orion.Wireless.Rogue )

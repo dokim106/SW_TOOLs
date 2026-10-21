@@ -1,0 +1,36 @@
+-- Query to check End of Support (EOS) status and assignment type for nodes in NCM.NodeProperties
+SELECT 
+
+  ncm.nodes.MachineType, 
+  -- Check if End of Support (EOS) date has expired
+  CASE WHEN EndOfSupport < GETDATE() THEN 'Yes' -- EOS date is in the past, so support has expired
+    WHEN EndOfSupport IS NULL THEN '-' -- EOS date not applicable
+    ELSE 'No' -- EOS date is in the future, so support has not expired
+    END AS [EOS Expired], 
+  -- Check if End of Sales (EOL) date has expired
+  CASE WHEN EndOfSales < GETDATE() THEN 'Yes' -- EOL date is in the past, so support has expired
+    WHEN EndOfSales IS NULL THEN '-' -- EOL date not applicable
+    ELSE 'No' -- EOL date is in the future, so support has not expired
+    END AS [EOL Expired]
+
+FROM 
+  NCM.NodeProperties AS NCM -- Table containing node properties related to EOS
+
+Where 
+  EosType in ('1', '2', '3') -- Optional: If you want to group by EOS Expired and Assignment Type, uncomment the next line
+
+GROUP BY 
+  CASE 
+    WHEN EndOfSupport < GETDATE() THEN 'Yes' -- EOS date is in the past, so support has expired
+    WHEN EndOfSupport IS NULL THEN '-' -- EOS date not applicable
+    ELSE 'No' -- EOS date is in the future, so support has not expired
+    END, 
+  CASE 
+    WHEN EndOfSales < GETDATE() THEN 'Yes' -- EOL date is in the past, so support has expired
+    WHEN EndOfSales IS NULL THEN '-' -- EOL date not applicable
+    ELSE 'No' -- EOL date is in the future, so support has not expired
+    END,  
+  CASE 
+    WHEN NCM.nodes.SwitchStack.SwitchStackMember.SerialNumber IS NULL THEN NCM.nodes.HardwareHealthInfos.ServiceTag ELSE NCM.nodes.SwitchStack.SwitchStackMember.SerialNumber 
+    END, 
+  ncm.nodes.MachineType

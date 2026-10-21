@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  :root{--bg:#0b0e13;--bar:#11161d;--line:#222a34;--fg:#c9cdd6;--muted:#7a828f;--acc:#e0392b}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;
+    font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  body{display:flex;flex-direction:column}
+  #bar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 10px;min-height:38px;
+    background:var(--bar);border-bottom:1px solid var(--line)}
+  #bar b{color:var(--acc);letter-spacing:.2em;margin-right:4px}
+  #games{display:flex;flex-wrap:wrap;gap:6px}
+  #games button{background:#161b22;color:var(--fg);border:1px solid var(--line);border-radius:4px;
+    padding:3px 10px;font:inherit;cursor:pointer}
+  #games button:hover{border-color:var(--muted)}
+  #games button.on{border-color:var(--acc);color:#fff}
+  #keys{flex:1;min-width:180px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #newtab{color:var(--muted);text-decoration:none}
+  #newtab:hover{color:var(--fg)}
+  #stage{flex:1;min-height:0;width:100%;border:0;display:block;background:#000}
+  body.nobar #bar{display:none}
+</style>
+</head>
+<body>
+  <header id="bar">
+    <b>{{TITLE_UPPER}}</b>
+    <nav id="games" aria-label="games"></nav>
+    <span id="keys">loading the game list&#8230;</span>
+    <a id="newtab" target="_blank" rel="noopener">open in tab &#x2197;</a>
+  </header>
+  <iframe id="stage" title="game" allow="fullscreen; autoplay; gamepad"></iframe>
+  <script src="{{LAUNCHER_JS}}"></script>
+</body>
+</html>

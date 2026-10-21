@@ -1,0 +1,86 @@
+SELECT 
+  Provider, 
+  'Instances' AS InstanceType, 
+  COUNT(VirtualMachineID) as Total 
+FROM 
+  Orion.Cloud.Aws.Instances 
+GROUP BY 
+  Provider, 
+  InstanceType 
+Union 
+  (
+    SELECT 
+      'Amazon AWS' as [Provider], 
+      'Volumes' AS InstanceType, 
+      COUNT(ID) as Total 
+    FROM 
+      Orion.Cloud.Aws.Volumes 
+    GROUP BY 
+      InstanceType
+  ) 
+UNION 
+  (
+    SELECT 
+      'Amazon AWS' as [Provider], 
+      'Vpcs' AS InstanceType, 
+      COUNT(ID) as Total 
+    FROM 
+      Orion.Cloud.Aws.Vpcs 
+    GROUP BY 
+      InstanceType
+  ) 
+Union 
+  (
+    SELECT 
+      Provider, 
+      'Instances' AS InstanceType, 
+      COUNT(InstanceId) as Total 
+    FROM 
+      Orion.Cloud.Azure.Instances 
+    GROUP BY 
+      InstanceType
+  ) 
+union 
+  (
+    SELECT 
+      'Microsoft Azure' as Provider, 
+      'Volumes' AS InstanceType, 
+      COUNT(Id) as Total 
+    FROM 
+      Orion.Cloud.Azure.Volumes 
+    GROUP BY 
+      InstanceType
+  ) 
+union 
+  (
+    SELECT 
+      'Microsoft Azure' as Provider, 
+      'Vpcs' AS InstanceType, 
+      COUNT(Id) as Total 
+    FROM 
+      Orion.Cloud.Azure.Vpcs 
+    GROUP BY 
+      InstanceType
+  ) 
+union all 
+  (
+    SELECT 
+      Provider, 
+      'VPN Gateway' as InstanceType, 
+      COUNT(Id) as Total 
+    FROM 
+      Orion.CloudMonitoring.CloudVPNGateway.AWS 
+    GROUP BY 
+      InstanceType
+  ) 
+union all 
+  (
+    SELECT 
+      Provider, 
+      'VPN Gateway' as InstanceType, 
+      COUNT(Id) as Total 
+    FROM 
+      Orion.CloudMonitoring.CloudVPNGateway.Azure 
+    GROUP BY 
+      InstanceType
+  )

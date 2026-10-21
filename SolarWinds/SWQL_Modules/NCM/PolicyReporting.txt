@@ -1,0 +1,17 @@
+select 
+a.report
+,a.info as [Informational]
+,a.warn as [Warning]
+,a.crit as [Critical]
+--,concat('Info[',a.info,']  warn[',a.warn,']  crit[',a.crit,']') as [v]
+from
+(
+SELECT top 100 ReportName as [report]
+,sum(isNULL(case when ErrorLevel=0 and IsViolation=1 then 1 end,0)) as [info]
+,sum(isNULL(case when ErrorLevel=1 and IsViolation=1 then 1 end,0)) as [warn]
+,sum(isNULL(case when ErrorLevel=2 and IsViolation=1 then 1 end,0)) as [crit]
+FROM Cirrus.PolicyCacheResults
+group by ReportName 
+order by 4 desc, 3 desc, 2 desc
+) a
+

@@ -1,0 +1,2 @@
+SELECT Address AS [Server Address], Port, IsDefault AS [Default Server], EnabledSSL AS [SSL]
+FROM Orion.SMTPServers

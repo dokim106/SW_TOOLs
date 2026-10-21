@@ -1,0 +1,19 @@
+-- Select vendor, configuration type, and the count of nodes with failed backups from NCM.ConfigBackupStatus
+
+SELECT 
+  Vendor,                                  -- Vendor of the device
+  ConfigType,                              -- Type of configuration (e.g., running, startup, etc.)
+  COUNT(NodeName) AS [Failed Count]        -- Count of nodes where the backup has failed
+
+FROM 
+  NCM.ConfigBackupStatus                   -- NCM.ConfigBackupStatus table holds backup statuses for devices
+
+WHERE 
+  BackupStatus != '1'                      -- Only include records where backup status is not successful (1 typically means success)
+
+GROUP BY 
+  Vendor,                                  -- Group by vendor to get failed counts per vendor
+  ConfigType                               -- Group by configuration type to get failed counts per config type
+
+ORDER BY 
+  [Failed Count] DESC                      -- Sort by failed count in descending order, showing highest failures first

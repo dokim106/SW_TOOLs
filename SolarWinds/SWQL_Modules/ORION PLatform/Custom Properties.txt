@@ -1,0 +1,12 @@
+SELECT 
+cp.TargetEntity, 
+cp.Field, 
+cpv.Value,   
+cp.Description,  
+cp.Mandatory
+
+FROM Orion.CustomProperty AS CP
+
+join Orion.CustomPropertyValues as CPV on cpv.Field = cp.Field
+
+--WHERE cp.TargetEntity = 'Orion.NodesCustomProperties'

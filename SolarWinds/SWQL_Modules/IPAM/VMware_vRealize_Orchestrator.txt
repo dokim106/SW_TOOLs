@@ -1,0 +1,3 @@
+SELECT
+NodeID, OrchestratorNodeID, DeviceID, ProductType, SiteID, Caption, Status, IsApiOnly, DetailsUrl
+FROM Orion.Orchestrators.Nodes

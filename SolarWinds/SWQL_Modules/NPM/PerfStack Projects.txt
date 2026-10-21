@@ -1,0 +1,3 @@
+SELECT DisplayName AS [Display Name]
+FROM Orion.PerfStack.Projects
+WHERE accountid != '_system'

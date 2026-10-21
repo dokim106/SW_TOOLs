@@ -1,0 +1,3 @@
+SELECT name AS database_name,
+       recovery_model_desc
+FROM sys.databases;

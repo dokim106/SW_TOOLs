@@ -1,0 +1,8 @@
+-- Retrieves the status of ADM polling from the Orion settings
+SELECT 
+    Description,  -- Describes the setting
+    Value         -- Indicates whether ADM polling is enabled
+FROM 
+    Orion.Setting
+WHERE 
+    Name = 'ADM.PollingEnabled';  -- Filters for specific ADM polling setting

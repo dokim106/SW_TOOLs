@@ -1,0 +1,18 @@
+SELECT CASE
+WHEN ViewGroupPosition IS NULL THEN ViewTitle 
+ELSE ViewGroupName
+END AS [View Name],
+ViewType, 
+lt.Name AS [Limitation Type],
+lt.Table,
+lt.Field,
+lt.Method AS [Selection Method],
+l.Definition AS [Limitation Definition],
+l.WhereClause AS [Limitation Where Clause]
+FROM Orion.Views v
+JOIN Orion.Limitations l ON v.LimitationID = l.LimitationID
+JOIN Orion.LimitationTypes lt ON l.LimitationTypeID = lt.LimitationTypeID
+WHERE IsActive = 'True'
+AND (LimitationID IS NOT NULL and LimitationID <> 0)
+AND (ViewGroupPosition IS NULL OR ViewGroupPosition = '1')
+ORDER BY [View Name]

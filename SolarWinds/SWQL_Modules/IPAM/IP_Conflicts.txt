@@ -1,0 +1,4 @@
+SELECT 
+    COUNT(*) AS [Conflict Count]
+FROM 
+    IPAM.Conflict;

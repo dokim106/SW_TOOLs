@@ -1,0 +1,3 @@
+SELECT NodeID, Caption, LastSync
+FROM Orion.Nodes
+WHERE DAYDIFF(LastSync, GETUTCDATE()) > 1

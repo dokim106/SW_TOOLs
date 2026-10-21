@@ -1,0 +1,31 @@
+SELECT
+    [Server Name],
+    IP,
+    EngineVersion
+FROM(
+SELECT 
+    ServerName AS [Server Name], 
+    IP, 
+    EngineVersion 
+FROM 
+    Orion.Engines 
+WHERE 
+    ServerType = 'Additional'
+
+UNION ALL
+(
+SELECT 
+    p.HostName AS [Server Name],
+    p.PrimaryIpAddress,
+    p.Engine.EngineVersion
+FROM 
+    Orion.HA.PoolMembers AS p
+WHERE 
+    p.PoolMemberType LIKE '%additionalpoller%'
+) 
+)AS CombinedResults
+
+GROUP BY
+    [Server Name],
+    IP,
+    EngineVersion

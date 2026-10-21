@@ -1,0 +1,14 @@
+select 'Total' as [Metric], count(isNULL(DependencyId,0)) as [Count] from orion.Dependencies 
+union all 
+(
+select 'Automatic' as [c], count(*) as [v] from orion.Dependencies  where AutoManaged=1 
+)
+union all 
+(
+select 'User-Defined' as [c],count(*) as [v] from orion.Dependencies  where automanaged=0 
+)
+
+union all 
+(
+select d.Name as [c], null as [v] from orion.Dependencies d  where automanaged=0 
+)

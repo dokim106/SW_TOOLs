@@ -1,0 +1,36 @@
+-- Controllers
+select 'Controllers' as [Metric], ISNULL(count(*), 0) as [Value], n.Vendor 
+from orion.Wireless.Controllers wc 
+LEFT JOIN Orion.Nodes n ON wc.NodeID = n.NodeID
+GROUP BY n.Vendor
+
+union all
+
+(select wc.DisplayName as [c],  isNULL(count(*),0) as [v], n.Vendor from orion.Wireless.Controllers wc 
+LEFT JOIN Orion.Nodes n ON wc.NodeID = n.NodeID
+GROUP BY n.Vendor, wc.DisplayName
+)
+
+union all 
+
+-- Access Points
+(select 'Access Points' as [Metric], ISNULL(count(*), 0) as [Value], n.Vendor 
+from orion.Wireless.AccessPoints ap 
+LEFT JOIN Orion.Nodes n ON ap.NodeID = n.NodeID
+GROUP BY n.Vendor)
+
+union all
+
+-- Individual Access Points with Clients
+(select CONCAT('    ', ap.DisplayName) as [Metric], CONCAT(ap.Clients, ' ') as [Value], n.Vendor  
+from orion.Wireless.AccessPoints ap 
+LEFT JOIN Orion.Nodes n ON ap.NodeID = n.NodeID
+GROUP BY ap.DisplayName, ap.Clients, n.Vendor)
+
+union all
+
+-- Rogue Access Points
+(select 'Rogue APs' as [Metric], ISNULL(count(*), 0) as [Value], n.Vendor 
+from orion.Wireless.Rogue r 
+LEFT JOIN Orion.Nodes n ON r.NodeID = n.NodeID
+GROUP BY n.Vendor);

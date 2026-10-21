@@ -1,0 +1,1816 @@
+<Report xmlns="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Category>Availability</Category>
+	<Configs xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Data">
+		<a:ConfigurationData i:type="b:TableConfiguration" xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Tables">
+			<a:DisplaySubTitle/>
+			<a:DisplayTitle>Member Availability by Groups (Hourly)</a:DisplayTitle>
+			<a:RefId>a2c4dc85-dd91-4b3e-bef9-8ad642724498</a:RefId>
+			<b:Columns>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Caption</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>true</a:IsFilterBy>
+							<a:IsGroupBy>true</a:IsGroupBy>
+							<a:IsInherited>false</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>KMSORIOBS01v</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>Caption</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Nodes|Caption</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.link.entity</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>EnabledTooltips</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.image.vendor.watermark</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>imageformat</a:Name>
+									<a:Value>/netperfmon/images/vendors/{0}</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Caption</b:PropertyName>
+					<b:RefId>def61d25-2351-9c2f-9b9f-3d0183515055</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>DetailsUrl</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>false</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:1</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>DetailsUrl</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Nodes|DetailsUrl</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>true</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation"/>
+					<b:PropertyName>DetailsUrl</b:PropertyName>
+					<b:RefId>3359ed45-7e87-8a5e-53c3-e05398d4abda</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Group Name</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>true</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>Random Group</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>Group Name</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Groups|DisplayName|Group Name</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.link.entity</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>EnabledTooltips</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.image.status.watermark</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>imageformat</a:Name>
+									<a:Value>/orion/images/statusicons/small-{0}.gif</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Group Name</b:PropertyName>
+					<b:RefId>73eaabad-278e-71cb-a76a-28f51e5dad87</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>_LinkFor_Group Name</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>true</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>/Orion/NetPerfMon/ContainerDetails.aspx?NetObject=C:1</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>_LinkFor_Group Name</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Groups|DetailsUrl|_LinkFor_Group Name</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>true</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation"/>
+					<b:PropertyName>_LinkFor_Group Name</b:PropertyName>
+					<b:RefId>c37d4e6e-6c5b-41fe-2857-28718b1f1cf3</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Center</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Availability</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.Double</a:Data>
+							</a:DataType>
+							<a:DeclType>Float</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description i:nil="true"/>
+							<a:IsFavorite i:nil="true"/>
+							<a:IsFilterBy i:nil="true"/>
+							<a:IsGroupBy i:nil="true"/>
+							<a:IsInherited i:nil="true"/>
+							<a:IsManaged i:nil="true"/>
+							<a:IsStatistic i:nil="true"/>
+							<a:PreviewValue i:nil="true"/>
+							<a:Units i:nil="true"/>
+							<a:UtcTimeIsInLocalTime i:nil="true"/>
+						</c:DataTypeInfo>
+						<c:DisplayName>Availability</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>db|Availability|computed</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Center</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.text.percentagebar</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>ErrorLimit</a:Name>
+									<a:Value>75</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>WarningLimit</a:Name>
+									<a:Value>90</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>HigherIsBetter</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Availability</b:PropertyName>
+					<b:RefId>d44df2bb-965c-5057-a239-5b16a2ec9b7c</b:RefId>
+					<b:Summary>
+						<b:Calculation>Average</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>SummaryTime</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.DateTime</a:Data>
+							</a:DataType>
+							<a:DeclType>DateTime</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description i:nil="true"/>
+							<a:IsFavorite i:nil="true"/>
+							<a:IsFilterBy i:nil="true"/>
+							<a:IsGroupBy i:nil="true"/>
+							<a:IsInherited i:nil="true"/>
+							<a:IsManaged i:nil="true"/>
+							<a:IsStatistic i:nil="true"/>
+							<a:PreviewValue i:nil="true"/>
+							<a:Units i:nil="true"/>
+							<a:UtcTimeIsInLocalTime i:nil="true"/>
+						</c:DataTypeInfo>
+						<c:DisplayName>SummaryTime</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>db|SummaryTime|computed</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.text.datetimeformat</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>DateTimeFormatDateFormatList</a:Name>
+									<a:Value>DateTime</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>DateTimeFormatFormatString</a:Name>
+									<a:Value>MM/dd/yy h:mm:ss tt</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>SummaryTime</b:PropertyName>
+					<b:RefId>0ec2cb29-8ba4-1e63-810e-ea44c913d2e9</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+			</b:Columns>
+			<b:DefaultStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+			<b:Filter xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:Expression i:nil="true"/>
+				<c:Limit>
+					<c:Count i:nil="true"/>
+					<c:Mode>ShowAll</c:Mode>
+					<c:OrionServerIDsToIgnore i:nil="true"/>
+					<c:Percentage i:nil="true"/>
+				</c:Limit>
+			</b:Filter>
+			<b:Indents>
+				<b:TableIndentEntry>
+					<b:ColumnId>73eaabad-278e-71cb-a76a-28f51e5dad87</b:ColumnId>
+					<b:HeaderStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					<b:IncludeSummaryRow>false</b:IncludeSummaryRow>
+				</b:TableIndentEntry>
+				<b:TableIndentEntry>
+					<b:ColumnId>0ec2cb29-8ba4-1e63-810e-ea44c913d2e9</b:ColumnId>
+					<b:HeaderStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					<b:IncludeSummaryRow>false</b:IncludeSummaryRow>
+				</b:TableIndentEntry>
+			</b:Indents>
+			<b:Sorts xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:SortEntry>
+					<c:Direction>Ascending</c:Direction>
+					<c:QFieldRefID>73eaabad-278e-71cb-a76a-28f51e5dad87</c:QFieldRefID>
+				</c:SortEntry>
+				<c:SortEntry>
+					<c:Direction>Ascending</c:Direction>
+					<c:QFieldRefID>def61d25-2351-9c2f-9b9f-3d0183515055</c:QFieldRefID>
+				</c:SortEntry>
+				<c:SortEntry>
+					<c:Direction>Descending</c:Direction>
+					<c:QFieldRefID>0ec2cb29-8ba4-1e63-810e-ea44c913d2e9</c:QFieldRefID>
+				</c:SortEntry>
+			</b:Sorts>
+			<b:SummarizeMode>NoDataSummarization</b:SummarizeMode>
+			<b:TimeField xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:DataTypeInfo i:nil="true"/>
+				<c:DisplayName i:nil="true"/>
+				<c:NavigationPath i:nil="true"/>
+				<c:OwnerDisplayName i:nil="true"/>
+				<c:RefID>
+					<c:Data>db|SummaryTime|computed</c:Data>
+				</c:RefID>
+			</b:TimeField>
+		</a:ConfigurationData>
+		<a:ConfigurationData i:type="b:TableConfiguration" xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Tables">
+			<a:DisplaySubTitle/>
+			<a:DisplayTitle>Member Availability by Groups (Daily)</a:DisplayTitle>
+			<a:RefId>e0be3a13-eaf2-4fb9-9cd9-bb54d03db328</a:RefId>
+			<b:Columns>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Caption</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>true</a:IsFilterBy>
+							<a:IsGroupBy>true</a:IsGroupBy>
+							<a:IsInherited>false</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>KMSORIOBS01v</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>Caption</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Nodes|Caption</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.link.entity</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>EnabledTooltips</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.image.vendor.watermark</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>imageformat</a:Name>
+									<a:Value>/netperfmon/images/vendors/{0}</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Caption</b:PropertyName>
+					<b:RefId>d1ace9f2-cd8f-f97d-e1d3-d1c37b4bdc93</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>DetailsUrl</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>false</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:1</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>DetailsUrl</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Nodes|DetailsUrl</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>true</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation"/>
+					<b:PropertyName>DetailsUrl</b:PropertyName>
+					<b:RefId>ab780026-43b7-847f-e0fd-7d9db02cea31</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Group Name</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>true</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>Random Group</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>Group Name</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Groups|DisplayName|Group Name</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.link.entity</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>EnabledTooltips</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.image.status.watermark</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>imageformat</a:Name>
+									<a:Value>/orion/images/statusicons/small-{0}.gif</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Group Name</b:PropertyName>
+					<b:RefId>cf0cfa5e-a773-fd95-3f15-4f7840f626a0</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>_LinkFor_Group Name</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>true</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>/Orion/NetPerfMon/ContainerDetails.aspx?NetObject=C:1</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>_LinkFor_Group Name</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Groups|DetailsUrl|_LinkFor_Group Name</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>true</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation"/>
+					<b:PropertyName>_LinkFor_Group Name</b:PropertyName>
+					<b:RefId>0b32f360-5acb-155b-66a6-738accfc8567</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>SummaryTime</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.DateTime</a:Data>
+							</a:DataType>
+							<a:DeclType>DateTime</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description i:nil="true"/>
+							<a:IsFavorite i:nil="true"/>
+							<a:IsFilterBy i:nil="true"/>
+							<a:IsGroupBy i:nil="true"/>
+							<a:IsInherited i:nil="true"/>
+							<a:IsManaged i:nil="true"/>
+							<a:IsStatistic i:nil="true"/>
+							<a:PreviewValue i:nil="true"/>
+							<a:Units i:nil="true"/>
+							<a:UtcTimeIsInLocalTime i:nil="true"/>
+						</c:DataTypeInfo>
+						<c:DisplayName>SummaryTime</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>db|SummaryTime|computed</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.text.datetimeformat</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>DateTimeFormatDateFormatList</a:Name>
+									<a:Value>Date</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>DateTimeFormatFormatString</a:Name>
+									<a:Value>MM/dd/yy h:mm:ss tt</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>SummaryTime</b:PropertyName>
+					<b:RefId>424fc513-0b28-0a75-7141-b01f069af2d0</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Availability</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.Double</a:Data>
+							</a:DataType>
+							<a:DeclType>Float</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description i:nil="true"/>
+							<a:IsFavorite i:nil="true"/>
+							<a:IsFilterBy i:nil="true"/>
+							<a:IsGroupBy i:nil="true"/>
+							<a:IsInherited i:nil="true"/>
+							<a:IsManaged i:nil="true"/>
+							<a:IsStatistic i:nil="true"/>
+							<a:PreviewValue i:nil="true"/>
+							<a:Units i:nil="true"/>
+							<a:UtcTimeIsInLocalTime i:nil="true"/>
+						</c:DataTypeInfo>
+						<c:DisplayName>Availability</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>db|Availability|computed</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.text.percentagebar</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>ErrorLimit</a:Name>
+									<a:Value>75</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>WarningLimit</a:Name>
+									<a:Value>90</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>HigherIsBetter</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Availability</b:PropertyName>
+					<b:RefId>bc3c88d3-dc41-fe3a-ba72-2817930720bd</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+			</b:Columns>
+			<b:DefaultStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+			<b:Filter xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:Expression i:nil="true"/>
+				<c:Limit>
+					<c:Count i:nil="true"/>
+					<c:Mode>ShowAll</c:Mode>
+					<c:OrionServerIDsToIgnore i:nil="true"/>
+					<c:Percentage i:nil="true"/>
+				</c:Limit>
+			</b:Filter>
+			<b:Indents>
+				<b:TableIndentEntry>
+					<b:ColumnId>cf0cfa5e-a773-fd95-3f15-4f7840f626a0</b:ColumnId>
+					<b:HeaderStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					<b:IncludeSummaryRow>false</b:IncludeSummaryRow>
+				</b:TableIndentEntry>
+				<b:TableIndentEntry>
+					<b:ColumnId>424fc513-0b28-0a75-7141-b01f069af2d0</b:ColumnId>
+					<b:HeaderStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					<b:IncludeSummaryRow>false</b:IncludeSummaryRow>
+				</b:TableIndentEntry>
+			</b:Indents>
+			<b:Sorts xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:SortEntry>
+					<c:Direction>Ascending</c:Direction>
+					<c:QFieldRefID>cf0cfa5e-a773-fd95-3f15-4f7840f626a0</c:QFieldRefID>
+				</c:SortEntry>
+				<c:SortEntry>
+					<c:Direction>Ascending</c:Direction>
+					<c:QFieldRefID>d1ace9f2-cd8f-f97d-e1d3-d1c37b4bdc93</c:QFieldRefID>
+				</c:SortEntry>
+				<c:SortEntry>
+					<c:Direction>Descending</c:Direction>
+					<c:QFieldRefID>424fc513-0b28-0a75-7141-b01f069af2d0</c:QFieldRefID>
+				</c:SortEntry>
+			</b:Sorts>
+			<b:SummarizeMode>NoDataSummarization</b:SummarizeMode>
+			<b:TimeField xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:DataTypeInfo i:nil="true"/>
+				<c:DisplayName i:nil="true"/>
+				<c:NavigationPath i:nil="true"/>
+				<c:OwnerDisplayName i:nil="true"/>
+				<c:RefID>
+					<c:Data>db|SummaryTime|computed</c:Data>
+				</c:RefID>
+			</b:TimeField>
+		</a:ConfigurationData>
+		<a:ConfigurationData i:type="b:TableConfiguration" xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Tables">
+			<a:DisplaySubTitle/>
+			<a:DisplayTitle>Member Availability by Groups (Monthly)</a:DisplayTitle>
+			<a:RefId>ae2ea93d-0629-41d4-aad5-ce56a5483464</a:RefId>
+			<b:Columns>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Caption</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>true</a:IsFilterBy>
+							<a:IsGroupBy>true</a:IsGroupBy>
+							<a:IsInherited>false</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>KMSORIOBS01v</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>Caption</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Nodes|Caption</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.link.entity</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>EnabledTooltips</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.image.vendor.watermark</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>imageformat</a:Name>
+									<a:Value>/netperfmon/images/vendors/{0}</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Caption</b:PropertyName>
+					<b:RefId>dbbe920c-6626-19a3-6e6a-b08bc7b785d5</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>DetailsUrl</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>false</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:1</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>DetailsUrl</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Nodes|DetailsUrl</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>true</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation"/>
+					<b:PropertyName>DetailsUrl</b:PropertyName>
+					<b:RefId>5f94edbe-503d-8bf8-e0ba-2ce092669069</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Group Name</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>true</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>Random Group</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>Group Name</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Groups|DisplayName|Group Name</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.link.entity</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>EnabledTooltips</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.image.status.watermark</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>imageformat</a:Name>
+									<a:Value>/orion/images/statusicons/small-{0}.gif</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Group Name</b:PropertyName>
+					<b:RefId>cabe5985-6a4f-926e-159d-d6d56ef9f02c</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>_LinkFor_Group Name</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.String</a:Data>
+							</a:DataType>
+							<a:DeclType>Text</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description/>
+							<a:IsFavorite>false</a:IsFavorite>
+							<a:IsFilterBy>false</a:IsFilterBy>
+							<a:IsGroupBy>false</a:IsGroupBy>
+							<a:IsInherited>true</a:IsInherited>
+							<a:IsManaged>true</a:IsManaged>
+							<a:IsStatistic>false</a:IsStatistic>
+							<a:PreviewValue>/Orion/NetPerfMon/ContainerDetails.aspx?NetObject=C:1</a:PreviewValue>
+							<a:Units/>
+							<a:UtcTimeIsInLocalTime>false</a:UtcTimeIsInLocalTime>
+						</c:DataTypeInfo>
+						<c:DisplayName>_LinkFor_Group Name</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>Orion.Groups|DetailsUrl|_LinkFor_Group Name</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>true</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation"/>
+					<b:PropertyName>_LinkFor_Group Name</b:PropertyName>
+					<b:RefId>a4e7bcb2-d21c-312d-2a13-3910c36eb594</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>SummaryTime</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.DateTime</a:Data>
+							</a:DataType>
+							<a:DeclType>DateTime</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description i:nil="true"/>
+							<a:IsFavorite i:nil="true"/>
+							<a:IsFilterBy i:nil="true"/>
+							<a:IsGroupBy i:nil="true"/>
+							<a:IsInherited i:nil="true"/>
+							<a:IsManaged i:nil="true"/>
+							<a:IsStatistic i:nil="true"/>
+							<a:PreviewValue i:nil="true"/>
+							<a:Units i:nil="true"/>
+							<a:UtcTimeIsInLocalTime i:nil="true"/>
+						</c:DataTypeInfo>
+						<c:DisplayName>SummaryTime</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>db|SummaryTime|computed</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.text.datetimeformat</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>DateTimeFormatDateFormatList</a:Name>
+									<a:Value>Month</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>DateTimeFormatFormatString</a:Name>
+									<a:Value>MM/dd/yy h:mm:ss tt</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>SummaryTime</b:PropertyName>
+					<b:RefId>79e67e15-1bd6-b9ea-d374-ff5747ecb0f3</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+				<b:TableColumn>
+					<b:CellStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:CellStyle>
+					<b:DataColumnName i:nil="true"/>
+					<b:DisplayName>Availability</b:DisplayName>
+					<b:Field xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+						<c:DataTypeInfo>
+							<a:ApplicationType i:nil="true"/>
+							<a:DataType>
+								<a:Data>System.Double</a:Data>
+							</a:DataType>
+							<a:DeclType>Float</a:DeclType>
+							<a:DefaultAggregation>NotSpecified</a:DefaultAggregation>
+							<a:DefaultDataUnitId i:nil="true"/>
+							<a:DefaultTransformId i:nil="true"/>
+							<a:Description i:nil="true"/>
+							<a:IsFavorite i:nil="true"/>
+							<a:IsFilterBy i:nil="true"/>
+							<a:IsGroupBy i:nil="true"/>
+							<a:IsInherited i:nil="true"/>
+							<a:IsManaged i:nil="true"/>
+							<a:IsStatistic i:nil="true"/>
+							<a:PreviewValue i:nil="true"/>
+							<a:Units i:nil="true"/>
+							<a:UtcTimeIsInLocalTime i:nil="true"/>
+						</c:DataTypeInfo>
+						<c:DisplayName>Availability</c:DisplayName>
+						<c:NavigationPath i:nil="true"/>
+						<c:OwnerDisplayName i:nil="true"/>
+						<c:RefID>
+							<c:Data>db|Availability|computed</c:Data>
+						</c:RefID>
+					</b:Field>
+					<b:FixedWidth i:nil="true"/>
+					<b:HeaderStyle xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<c:BackgroundColor i:nil="true"/>
+						<c:Borders i:nil="true"/>
+						<c:DisplayName i:nil="true"/>
+						<c:Font i:nil="true"/>
+						<c:Padding i:nil="true"/>
+						<c:RefId>00000000-0000-0000-0000-000000000000</c:RefId>
+						<c:TextAlign>Left</c:TextAlign>
+						<c:ZebraBackgroundColor i:nil="true"/>
+					</b:HeaderStyle>
+					<b:IsHTMLTagsAllowed>false</b:IsHTMLTagsAllowed>
+					<b:IsHidden>false</b:IsHidden>
+					<b:PercentWidth i:nil="true"/>
+					<b:Presenters xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Presentation">
+						<c:PresenterRef>
+							<c:PresenterId>orion.core.text.percentagebar</c:PresenterId>
+							<c:Values>
+								<a:ContextValue>
+									<a:Name>ErrorLimit</a:Name>
+									<a:Value>75</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>WarningLimit</a:Name>
+									<a:Value>90</a:Value>
+								</a:ContextValue>
+								<a:ContextValue>
+									<a:Name>HigherIsBetter</a:Name>
+									<a:Value>on</a:Value>
+								</a:ContextValue>
+							</c:Values>
+						</c:PresenterRef>
+					</b:Presenters>
+					<b:PropertyName>Availability</b:PropertyName>
+					<b:RefId>1deccdf8-ff04-adab-c399-d2b434236a3c</b:RefId>
+					<b:Summary>
+						<b:Calculation>NotSpecified</b:Calculation>
+						<b:CellStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					</b:Summary>
+					<b:TransformId/>
+					<b:ValidRange>NotSpecified</b:ValidRange>
+				</b:TableColumn>
+			</b:Columns>
+			<b:DefaultStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+			<b:Filter xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:Expression i:nil="true"/>
+				<c:Limit>
+					<c:Count i:nil="true"/>
+					<c:Mode>ShowAll</c:Mode>
+					<c:OrionServerIDsToIgnore i:nil="true"/>
+					<c:Percentage i:nil="true"/>
+				</c:Limit>
+			</b:Filter>
+			<b:Indents>
+				<b:TableIndentEntry>
+					<b:ColumnId>cabe5985-6a4f-926e-159d-d6d56ef9f02c</b:ColumnId>
+					<b:HeaderStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					<b:IncludeSummaryRow>false</b:IncludeSummaryRow>
+				</b:TableIndentEntry>
+				<b:TableIndentEntry>
+					<b:ColumnId>79e67e15-1bd6-b9ea-d374-ff5747ecb0f3</b:ColumnId>
+					<b:HeaderStyle i:nil="true" xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles"/>
+					<b:IncludeSummaryRow>false</b:IncludeSummaryRow>
+				</b:TableIndentEntry>
+			</b:Indents>
+			<b:Sorts xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:SortEntry>
+					<c:Direction>Ascending</c:Direction>
+					<c:QFieldRefID>cabe5985-6a4f-926e-159d-d6d56ef9f02c</c:QFieldRefID>
+				</c:SortEntry>
+				<c:SortEntry>
+					<c:Direction>Ascending</c:Direction>
+					<c:QFieldRefID>dbbe920c-6626-19a3-6e6a-b08bc7b785d5</c:QFieldRefID>
+				</c:SortEntry>
+				<c:SortEntry>
+					<c:Direction>Descending</c:Direction>
+					<c:QFieldRefID>79e67e15-1bd6-b9ea-d374-ff5747ecb0f3</c:QFieldRefID>
+				</c:SortEntry>
+			</b:Sorts>
+			<b:SummarizeMode>NoDataSummarization</b:SummarizeMode>
+			<b:TimeField xmlns:c="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+				<c:DataTypeInfo i:nil="true"/>
+				<c:DisplayName i:nil="true"/>
+				<c:NavigationPath i:nil="true"/>
+				<c:OwnerDisplayName i:nil="true"/>
+				<c:RefID>
+					<c:Data>db|SummaryTime|computed</c:Data>
+				</c:RefID>
+			</b:TimeField>
+		</a:ConfigurationData>
+	</Configs>
+	<DataSources xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Selection">
+		<a:DataSource>
+			<a:CommandText>SELECT [Groups].DisplayName AS [Group Name]
+     , [Groups].DetailsUrl AS [_LinkFor_Group Name]
+     , [Groups].Status
+     , [Nodes].Caption AS [Caption]
+     , [Nodes].DetailsUrl AS [DetailsUrl]
+     , AVG([Nodes].ResponseTimeHistory.Availability) AS [Availability]
+     , DATETRUNC('hour',[Nodes].ResponseTimeHistory.ObservationTimestamp) AS [SummaryTime]
+     , [Nodes].VendorInfo.DisplayName AS [Vendor Display Name]
+     , [Nodes].VendorInfo.Icon AS [Vendor Icon]
+FROM Orion.Groups AS [Groups]
+INNER JOIN Orion.Nodes AS [Nodes]
+  ON [Groups].Members.MemberUri = [Nodes].Uri
+--WHERE [Nodes].ResponseTimeHistory.ObservationTimestamp BETWEEN ${FromTime} AND ${ToTime}
+GROUP BY [Groups].DisplayName, [Nodes].Caption, DATETRUNC('hour',[Nodes].ResponseTimeHistory.ObservationTimestamp)</a:CommandText>
+			<a:DynamicSelectionType>Undefined</a:DynamicSelectionType>
+			<a:EntityUri xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<a:Filter i:nil="true"/>
+			<a:MasterEntity>Orion.Nodes</a:MasterEntity>
+			<a:Name>Group Member Availability (Hourly)</a:Name>
+			<a:NetObjectId/>
+			<a:RefId>7fc761ce-70e4-498e-bb88-c6df4f06bb99</a:RefId>
+			<a:Type>CustomSWQL</a:Type>
+		</a:DataSource>
+		<a:DataSource>
+			<a:CommandText>SELECT [Groups].DisplayName AS [Group Name]
+     , [Groups].DetailsUrl AS [_LinkFor_Group Name]
+     , [Groups].Status
+     , [Nodes].Caption AS [Caption]
+     , [Nodes].DetailsUrl AS [DetailsUrl]
+     , AVG([Nodes].ResponseTimeHistory.Availability) AS [Availability]
+     , DATETRUNC('day',[Nodes].ResponseTimeHistory.ObservationTimestamp) AS [SummaryTime]
+     , [Nodes].VendorInfo.DisplayName AS [Vendor Display Name]
+     , [Nodes].VendorInfo.Icon AS [Vendor Icon]
+FROM Orion.Groups AS [Groups]
+INNER JOIN Orion.Nodes AS [Nodes]
+  ON [Groups].Members.MemberUri = [Nodes].Uri
+--WHERE [Nodes].ResponseTimeHistory.ObservationTimestamp BETWEEN ${FromTime} AND ${ToTime}
+GROUP BY [Groups].DisplayName, [Nodes].Caption, DATETRUNC('day',[Nodes].ResponseTimeHistory.ObservationTimestamp)</a:CommandText>
+			<a:DynamicSelectionType>Undefined</a:DynamicSelectionType>
+			<a:EntityUri xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<a:Filter i:nil="true"/>
+			<a:MasterEntity>Orion.Nodes</a:MasterEntity>
+			<a:Name>Group Member Availability (Daily)</a:Name>
+			<a:NetObjectId/>
+			<a:RefId>b30bdf00-a6f4-4bef-8ea1-74486c6d5b2f</a:RefId>
+			<a:Type>CustomSWQL</a:Type>
+		</a:DataSource>
+		<a:DataSource>
+			<a:CommandText>SELECT [Groups].DisplayName AS [Group Name]
+     , [Groups].DetailsUrl AS [_LinkFor_Group Name]
+     , [Groups].Status
+     , [Nodes].Caption AS [Caption]
+     , [Nodes].DetailsUrl AS [DetailsUrl]
+     , AVG([Nodes].ResponseTimeHistory.Availability) AS [Availability]
+     , DATETRUNC('month',[Nodes].ResponseTimeHistory.ObservationTimestamp) AS [SummaryTime]
+     , [Nodes].VendorInfo.DisplayName AS [Vendor Display Name]
+     , [Nodes].VendorInfo.Icon AS [Vendor Icon]
+FROM Orion.Groups AS [Groups]
+INNER JOIN Orion.Nodes AS [Nodes]
+  ON [Groups].Members.MemberUri = [Nodes].Uri
+--WHERE [Nodes].ResponseTimeHistory.ObservationTimestamp BETWEEN ${FromTime} AND ${ToTime}
+GROUP BY [Groups].DisplayName, [Nodes].Caption, DATETRUNC('month',[Nodes].ResponseTimeHistory.ObservationTimestamp)</a:CommandText>
+			<a:DynamicSelectionType>Undefined</a:DynamicSelectionType>
+			<a:EntityUri xmlns:b="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+			<a:Filter i:nil="true"/>
+			<a:MasterEntity>Orion.Nodes</a:MasterEntity>
+			<a:Name>Group Member Availability (Monthly)</a:Name>
+			<a:NetObjectId/>
+			<a:RefId>b9493884-7c74-41d7-ab4c-8b05aeda7564</a:RefId>
+			<a:Type>CustomSWQL</a:Type>
+		</a:DataSource>
+	</DataSources>
+	<Description>Multiple Date/Time Representations</Description>
+	<Footer xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Layout">
+		<a:CustomText>© SolarWinds Worldwide, LLC. All Rights Reserved.</a:CustomText>
+		<a:ShowCustomText>true</a:ShowCustomText>
+		<a:ShowPageNumber>true</a:ShowPageNumber>
+		<a:ShowTimestamp>true</a:ShowTimestamp>
+		<a:Visible>true</a:Visible>
+	</Footer>
+	<Header xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Layout">
+		<a:Logo>standard</a:Logo>
+		<a:SubTitle>Multiple Date/Time Representations</a:SubTitle>
+		<a:Title>Group Member Availability Report</a:Title>
+		<a:Visible>true</a:Visible>
+	</Header>
+	<LicenseFeatureName i:nil="true"/>
+	<LimitationCategory>Default Folder</LimitationCategory>
+	<ModuleTitle i:nil="true"/>
+	<Name>Group Member Availability Report</Name>
+	<OrionFeatureName i:nil="true"/>
+	<PageLayout xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Layout">
+		<a:Height>0</a:Height>
+		<a:Orientation i:nil="true"/>
+		<a:PublishingType>web</a:PublishingType>
+		<a:Size i:nil="true"/>
+		<a:Units i:nil="true"/>
+		<a:Width>1800</a:Width>
+	</PageLayout>
+	<ReportGuid>4a9cb44c-7591-4ced-8c6b-f15f4100b76d</ReportGuid>
+	<Sections xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Layout">
+		<a:Section>
+			<a:BorderStyle xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+				<b:Bottom i:nil="true"/>
+				<b:Color i:nil="true"/>
+				<b:Left i:nil="true"/>
+				<b:Right i:nil="true"/>
+				<b:Top i:nil="true"/>
+			</a:BorderStyle>
+			<a:Columns>
+				<a:SectionColumn>
+					<a:BorderStyle xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Styles">
+						<b:Bottom i:nil="true"/>
+						<b:Color i:nil="true"/>
+						<b:Left i:nil="true"/>
+						<b:Right i:nil="true"/>
+						<b:Top i:nil="true"/>
+					</a:BorderStyle>
+					<a:Cells>
+						<a:SectionCell>
+							<a:Config i:nil="true" xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Data"/>
+							<a:ConfigId>a2c4dc85-dd91-4b3e-bef9-8ad642724498</a:ConfigId>
+							<a:DataSelectionRefId>7fc761ce-70e4-498e-bb88-c6df4f06bb99</a:DataSelectionRefId>
+							<a:DisplayName>Custom Table</a:DisplayName>
+							<a:RefId>68899679-b5cd-4b51-90fe-08e6d250d830</a:RefId>
+							<a:RenderProvider>SolarWinds.Reporting,Table</a:RenderProvider>
+							<a:TimeframeRefId>f11b1b0f-b216-4d4b-a086-5ac0306f7353</a:TimeframeRefId>
+						</a:SectionCell>
+						<a:SectionCell>
+							<a:Config i:nil="true" xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Data"/>
+							<a:ConfigId>e0be3a13-eaf2-4fb9-9cd9-bb54d03db328</a:ConfigId>
+							<a:DataSelectionRefId>b30bdf00-a6f4-4bef-8ea1-74486c6d5b2f</a:DataSelectionRefId>
+							<a:DisplayName>Custom Table</a:DisplayName>
+							<a:RefId>d2131307-544e-4db5-998a-40bbc1c4f62c</a:RefId>
+							<a:RenderProvider>SolarWinds.Reporting,Table</a:RenderProvider>
+							<a:TimeframeRefId>3c6521f6-959b-41e5-9e4b-9cc4090544f8</a:TimeframeRefId>
+						</a:SectionCell>
+						<a:SectionCell>
+							<a:Config i:nil="true" xmlns:b="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Data"/>
+							<a:ConfigId>ae2ea93d-0629-41d4-aad5-ce56a5483464</a:ConfigId>
+							<a:DataSelectionRefId>b9493884-7c74-41d7-ab4c-8b05aeda7564</a:DataSelectionRefId>
+							<a:DisplayName>Custom Table</a:DisplayName>
+							<a:RefId>fff8f3d1-d43f-4af9-8924-4872268594b0</a:RefId>
+							<a:RenderProvider>SolarWinds.Reporting,Table</a:RenderProvider>
+							<a:TimeframeRefId>beb5d88d-8783-449c-9b14-4437a1d87ea9</a:TimeframeRefId>
+						</a:SectionCell>
+					</a:Cells>
+					<a:ColumnGutter i:nil="true"/>
+					<a:PercentWidth>100</a:PercentWidth>
+					<a:PixelWidth i:nil="true"/>
+					<a:RefId>675cd74e-370a-4e7c-89b6-d6f57a54fd00</a:RefId>
+					<a:Subtitle/>
+					<a:Title/>
+				</a:SectionColumn>
+			</a:Columns>
+			<a:RefId>62233b77-54e0-4250-a16c-7d3564eea562</a:RefId>
+		</a:Section>
+	</Sections>
+	<TimeFrames xmlns:a="http://schemas.datacontract.org/2004/07/SolarWinds.Reporting.Models.Timing">
+		<a:TimeFrame>
+			<a:DisplayName>Past Hour</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>c8c74f7e-0160-4288-8273-5b18685d27ce</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>PastHour</a:NamedTimeFrame>
+				<a:Unit>Hour</a:Unit>
+				<a:UnitCount>1</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Last 24 Hours</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>6f9e09b2-dbc3-4494-813a-45c527c9ae86</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>Last24Hours</a:NamedTimeFrame>
+				<a:Unit>Hour</a:Unit>
+				<a:UnitCount>24</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Past Hour</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>7e14b59a-1e2f-41c1-9eb5-dd496fb849da</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>PastHour</a:NamedTimeFrame>
+				<a:Unit>Hour</a:Unit>
+				<a:UnitCount>1</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Last 24 Hours</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>f11b1b0f-b216-4d4b-a086-5ac0306f7353</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>Last24Hours</a:NamedTimeFrame>
+				<a:Unit>Hour</a:Unit>
+				<a:UnitCount>24</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Last 7 Days</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>b55116aa-edd9-4179-a7c4-84023a02e0bc</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>Last7Days</a:NamedTimeFrame>
+				<a:Unit>Day</a:Unit>
+				<a:UnitCount>8</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Last 30 Days</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>112506ce-2994-4d58-8e93-91035bd2d430</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>Last30Days</a:NamedTimeFrame>
+				<a:Unit>Day</a:Unit>
+				<a:UnitCount>31</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Past Hour</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>b4d3d206-c8cd-446f-a1ed-2372d038c8ec</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>PastHour</a:NamedTimeFrame>
+				<a:Unit>Hour</a:Unit>
+				<a:UnitCount>1</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Last 30 Days</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>3c6521f6-959b-41e5-9e4b-9cc4090544f8</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>Last30Days</a:NamedTimeFrame>
+				<a:Unit>Day</a:Unit>
+				<a:UnitCount>31</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Past Hour</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>8e0e6947-6317-4803-bfb2-c71addc5e053</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>PastHour</a:NamedTimeFrame>
+				<a:Unit>Hour</a:Unit>
+				<a:UnitCount>1</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+		<a:TimeFrame>
+			<a:DisplayName>Last 12 Months</a:DisplayName>
+			<a:IsStatic>false</a:IsStatic>
+			<a:RefId>beb5d88d-8783-449c-9b14-4437a1d87ea9</a:RefId>
+			<a:Relative>
+				<a:NamedTimeFrame>Last12Months</a:NamedTimeFrame>
+				<a:Unit>Month</a:Unit>
+				<a:UnitCount>12</a:UnitCount>
+			</a:Relative>
+			<a:Static i:nil="true"/>
+		</a:TimeFrame>
+	</TimeFrames>
+</Report>

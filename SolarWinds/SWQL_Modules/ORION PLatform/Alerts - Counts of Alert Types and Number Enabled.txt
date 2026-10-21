@@ -1,0 +1,23 @@
+SELECT 'Out of the Box' AS [Alert Type],
+SUM (CASE WHEN Enabled = 'True' THEN 1 ELSE 0 END) AS [Enabled],
+SUM (CASE WHEN Enabled = 'False' THEN 1 ELSE 0 END) AS [Disabled],
+COUNT(*) AS Total
+FROM Orion.AlertConfigurations
+WHERE Canned = 'True'
+
+UNION ALL
+
+(SELECT 'User Defined' AS [Alert Type],
+SUM (CASE WHEN Enabled = 'True' THEN 1 ELSE 0 END) AS [Enabled],
+SUM (CASE WHEN Enabled = 'False' THEN 1 ELSE 0 END) AS [Disabled],
+COUNT(*) AS Total
+FROM Orion.AlertConfigurations
+WHERE Canned = 'False')
+
+UNION ALL
+
+(SELECT 'Total' AS [Alert Type],
+SUM (CASE WHEN Enabled = 'True' THEN 1 ELSE 0 END) AS [Enabled],
+SUM (CASE WHEN Enabled = 'False' THEN 1 ELSE 0 END) AS [Disabled],
+COUNT(*) AS Total
+FROM Orion.AlertConfigurations)

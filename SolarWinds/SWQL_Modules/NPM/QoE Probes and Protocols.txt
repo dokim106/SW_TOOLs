@@ -1,0 +1,3 @@
+SELECT 'TOTAL Probes' as [Metric], concat(isnull(count(*),0),'') as [Value] FROM orion.DPI.Probes
+union all (SELECT 'Enabled Probes' as [c], concat(isNULL(count(*),0),'') as [v] FROM orion.DPI.Probes where enabled=1)
+union all (SELECT concat('    ',name) as [c], concat((SELECT count(*) as [v] FROM Orion.DPI.Applications where LastDiscoveryProbeID=p.ProbeID),' protocols') as [v] FROM orion.DPI.Probes p where enabled=1)

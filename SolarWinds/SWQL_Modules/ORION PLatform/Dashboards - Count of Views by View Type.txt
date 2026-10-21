@@ -1,0 +1,5 @@
+SELECT ViewType AS [View Type], COUNT(*) AS Number
+FROM Orion.Views
+WHERE IsActive = 'True'
+GROUP BY ViewType
+ORDER BY ViewType

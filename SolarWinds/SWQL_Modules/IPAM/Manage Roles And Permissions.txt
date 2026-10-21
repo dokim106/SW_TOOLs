@@ -1,0 +1,27 @@
+SELECT DISTINCT
+    -- Column 1: Account Name
+    AccountID AS [Account Name], 
+
+    -- Column 2: Account Type
+    CASE 
+        WHEN AccountType = '0' THEN 'System Account'
+        WHEN AccountType = '1' THEN 'SolarWinds Account'
+        WHEN AccountType = '2' THEN 'Windows Individual Account'
+        WHEN AccountType = '3' THEN 'Windows Group Account'
+        WHEN AccountType = '4' THEN 'Windows Group User Account'
+        ELSE 'Unknown'
+    END AS [Account Type],
+
+    -- Column 3: Account Role
+    CASE 
+        WHEN Admin IS NOT NULL THEN 'Admin'
+        WHEN PowerUser IS NOT NULL THEN 'Power User'
+        WHEN Operator IS NOT NULL THEN 'Operator'
+        WHEN ReadOnly IS NOT NULL THEN 'Read Only'
+        WHEN NoAccess IS NOT NULL THEN 'No Access'
+        ELSE 'Unknown'
+    END AS [Role]
+FROM 
+    IPAM.AccountRoles
+ORDER BY 
+    [Account Type] ASC; -- Sorting by AccountType number ascending

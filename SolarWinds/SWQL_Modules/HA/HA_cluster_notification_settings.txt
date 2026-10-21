@@ -1,0 +1,14 @@
+SELECT
+  ac.AlertID,
+  ac.Name AS AlertName,
+  ac.NotifyEnabled,
+  ac.NotificationSettings,
+  ao.EntityType
+FROM Orion.AlertConfigurations ac
+JOIN Orion.AlertObjects ao
+  ON ao.AlertID = ac.AlertID
+WHERE
+  ac.Enabled = true
+  AND ac.NotifyEnabled = true
+  AND ao.EntityType LIKE '%HA%'
+ORDER BY ac.Name

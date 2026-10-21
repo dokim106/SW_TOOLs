@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOOM</title>
+<style>
+  :root{--bg:#0b0e13;--panel:#070a0e;--line:#222a34;--fg:#c9cdd6;--muted:#7a828f;--acc:#e0392b;
+        --std:#d8dce4;--err:#ff8e7a;--logc:#8aa0ff}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
+    font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  body{display:flex;flex-direction:column;gap:10px;padding:12px;height:100vh;overflow:hidden}
+  .bar{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px}
+  .bar .mark{color:var(--acc);font-weight:700;letter-spacing:.2em}
+  .bar .hint{color:var(--muted)}
+  .keys{display:flex;align-items:center;flex-wrap:wrap;gap:6px 5px;color:var(--muted);font-size:12px}
+  button{background:#161b22;color:var(--fg);border:1px solid var(--line);border-radius:4px;
+    padding:1px 7px;margin:0;font:inherit;line-height:1.5;min-width:20px;text-align:center;cursor:default}
+  .stage{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;flex:1;min-height:0}
+  canvas{background:#000;border:1px solid var(--line);border-radius:6px;image-rendering:pixelated;
+    outline:none;height:100%;max-height:100%;aspect-ratio:16/10;flex:3 1 460px;min-width:0}
+  #output{flex:2 1 280px;min-width:230px;height:100%;overflow-y:auto;background:var(--panel);
+    border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--muted);
+    font-size:11px;line-height:1.4;white-space:pre-wrap;word-break:break-word}
+  #output span.stdout{color:var(--std)} #output span.stderr{color:var(--err)} #output span.log{color:var(--logc)}
+  #output::-webkit-scrollbar{width:8px} #output::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+  .status{color:var(--muted);font-size:12px}
+  .status b{color:var(--fg);font-weight:600}
+  .off{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+  <div class="bar"><span class="mark">DOOM</span><span class="hint">click the screen, then press Enter to start</span></div>
+  <div class="keys">
+    <button id="enterButton" tabindex="-1">&#x23CE;</button>start
+    <button id="leftButton" tabindex="-1">&#x2190;</button><button id="upButton" tabindex="-1">&#x2191;</button><button id="downButton" tabindex="-1">&#x2193;</button><button id="rightButton" tabindex="-1">&#x2192;</button>move
+    <button id="ctrlButton" tabindex="-1">ctrl</button>fire
+    <button id="spaceButton" tabindex="-1">space</button>doors
+    <button id="altButton" tabindex="-1">alt</button>+ arrows strafe
+  </div>
+  <div class="stage">
+    <canvas id="screen" width="640" height="400" tabindex="0"></canvas>
+    <div id="output"></div>
+  </div>
+  <div class="status">engine <b><span id="fps_stats">0</span></b> fps &middot; <b><span id="drawframes_stats">0</span></b> frames</div>
+  <div class="off" aria-hidden="true"><span id="focushint"></span><span id="getmsps_stats"></span><span id="getms_stats"></span><span id="animationfps_stats"></span></div>
+  <script src="no-lurch.js"></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

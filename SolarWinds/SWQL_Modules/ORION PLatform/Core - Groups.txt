@@ -1,0 +1,4 @@
+select 'Total' as [Metric], concat(count(ContainerID),'') as [Count]  from orion.Container 
+union all 
+(
+select 'Dynamic' as [Metric], concat(count(distinct ContainerID),'') as [Count] from orion.ContainerMemberDefinition cd where cd.definition like 'filter%' ) 

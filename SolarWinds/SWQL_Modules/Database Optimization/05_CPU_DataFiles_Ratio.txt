@@ -1,0 +1,5 @@
+SELECT (SELECT cpu_count FROM sys.dm_os_sys_info) AS cpu_count,
+       COUNT(*) AS primary_file_count
+FROM sys.master_files
+WHERE database_id = DB_ID('YourSolarWindsDatabaseName')
+  AND type_desc = 'ROWS';

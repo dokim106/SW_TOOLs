@@ -1,0 +1,40 @@
+SELECT
+  'Total Templates'    AS MonthDescription,
+  COUNT(ID)            AS TemplatesCount,
+  9999                  AS SortYear,
+  0                     AS SortMonth
+FROM Cirrus.ConfigSnippets
+
+UNION ALL
+(
+  SELECT
+    CONCAT(
+      CASE MONTH(Created)
+        WHEN 1  THEN 'January'
+        WHEN 2  THEN 'February'
+        WHEN 3  THEN 'March'
+        WHEN 4  THEN 'April'
+        WHEN 5  THEN 'May'
+        WHEN 6  THEN 'June'
+        WHEN 7  THEN 'July'
+        WHEN 8  THEN 'August'
+        WHEN 9  THEN 'September'
+        WHEN 10 THEN 'October'
+        WHEN 11 THEN 'November'
+        WHEN 12 THEN 'December'
+      END,
+      ' ',
+      ToString(YEAR(Created))
+    )                   AS MonthDescription,
+    COUNT(ID)           AS TemplatesCount,
+    YEAR(Created)       AS SortYear,
+    MONTH(Created)      AS SortMonth
+  FROM Cirrus.ConfigSnippets
+  GROUP BY
+    YEAR(Created),
+    MONTH(Created)
+)
+
+ORDER BY
+  SortYear DESC,
+  SortMonth DESC

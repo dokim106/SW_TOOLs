@@ -1,0 +1,115 @@
+<#
+.SYNOPSIS
+  Prove that a remote Windows endpoint will accept SAM-style remote execution BEFORE building the component.
+
+.DESCRIPTION
+  Runs four checks against -ComputerName with -Credential and reports PASS/FAIL per step:
+    1. Ports        : 135 (RPC/WMI), 445 (SMB admin share, used to read WMI-launched output), 5985/5986 (WinRM).
+    2. WMI auth     : DCOM CimSession + Win32_OperatingSystem  -> the credential can query WMI at all.
+    3. WMI execute  : Win32_Process.Create launches powershell.exe on the target, writes to a file,
+                      then the file is read back over \\host\C$ (WMI process creation returns NO stdout,
+                      so this is the only way to get output from a WMI-launched script).
+    4. WinRM execute: Invoke-Command runs the same code with stdout coming straight back.
+                      THIS is the path SAM's "Windows PowerShell Monitor" uses in Remote Host mode.
+  Optionally (-LogPath) runs the real log-parse the SAM component will run: counts Error/Critical/Fatal
+  lines and prints SAM-format output (Message.* / Statistic.*) plus the exit code SAM maps to status.
+
+.PARAMETER ComputerName   Target host (FQDN or IP).
+.PARAMETER Credential     Domain or local admin on the target (SAM uses the same account for WMI + WinRM).
+.PARAMETER LogPath        Optional path ON THE TARGET to parse, e.g. 'C:\ProgramData\SolarWinds\Logs\Orion\Core.BusinessLayer.log'.
+.PARAMETER SkipWmiExec    Don't launch a process via WMI (some estates forbid Win32_Process.Create).
+
+.EXAMPLE
+  .\Test-SamRemoteExec.ps1 -ComputerName srv-app01.corp.local -Credential (Get-Credential CORP\svc_solarwinds)
+  .\Test-SamRemoteExec.ps1 -ComputerName <server> -Credential $cred -LogPath 'C:\ProgramData\SolarWinds\Logs\Orion\Core.BusinessLayer.log'
+
+  Exit code of THIS script: 0 = every selected check passed, 1 = something failed (see the table).
+#>
+[CmdletBinding()]
+param(
+  [Parameter(Mandatory)] [string]$ComputerName,
+  [Parameter(Mandatory)] [pscredential]$Credential,
+  [string]$LogPath,
+  [switch]$SkipWmiExec
+)
+$ErrorActionPreference = 'Stop'
+$results = [ordered]@{}
+function Step($name, [scriptblock]$body) {
+  try { $out = & $body; $results[$name] = "PASS  $out" ; Write-Host ("[PASS] {0,-14} {1}" -f $name, $out) -ForegroundColor Green }
+  catch { $results[$name] = "FAIL  $($_.Exception.Message)"; Write-Host ("[FAIL] {0,-14} {1}" -f $name, $_.Exception.Message) -ForegroundColor Red }
+}
+
+# ---------- 1. ports ----------
+Step 'Ports' {
+  $r = foreach ($p in 135, 445, 5985, 5986) {
+    $ok = (Test-NetConnection -ComputerName $ComputerName -Port $p -WarningAction SilentlyContinue -InformationLevel Quiet)
+    "{0}={1}" -f $p, $(if ($ok) { 'open' } else { 'closed' })
+  }
+  $r -join ' '
+}
+
+# ---------- 2. WMI auth (DCOM) ----------
+$cim = $null
+Step 'WMI-auth' {
+  $opt = New-CimSessionOption -Protocol Dcom
+  $script:cim = New-CimSession -ComputerName $ComputerName -Credential $Credential -SessionOption $opt -OperationTimeoutSec 30
+  $os = Get-CimInstance -CimSession $script:cim -ClassName Win32_OperatingSystem
+  "{0} ({1}) uptime since {2:g}" -f $os.CSName, $os.Caption, $os.LastBootUpTime
+}
+
+# ---------- 3. WMI execute (Win32_Process.Create + read back over C$) ----------
+if (-not $SkipWmiExec -and $script:cim) {
+  Step 'WMI-exec' {
+    $stamp  = Get-Date -Format 'yyyyMMddHHmmss'
+    $remote = "C:\Windows\Temp\sam-wmi-test-$stamp.txt"
+    $inner  = "`$env:COMPUTERNAME + ' ' + [Environment]::UserName + ' ' + (Get-Date -Format s) | Out-File -FilePath '$remote' -Encoding ascii"
+    $enc    = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($inner))
+    $cmd    = "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand $enc"
+    $ret    = Invoke-CimMethod -CimSession $script:cim -ClassName Win32_Process -MethodName Create -Arguments @{ CommandLine = $cmd }
+    if ($ret.ReturnValue -ne 0) { throw "Win32_Process.Create returned $($ret.ReturnValue) (2=access denied, 3=insufficient privilege, 8=unknown failure, 9=path not found, 21=invalid parameter)" }
+    # wait for the launched process to finish writing
+    $unc = "\\$ComputerName\C$\Windows\Temp\sam-wmi-test-$stamp.txt"
+    $drive = New-PSDrive -Name SamTest -PSProvider FileSystem -Root "\\$ComputerName\C$" -Credential $Credential -ErrorAction Stop
+    try {
+      $deadline = (Get-Date).AddSeconds(30); $content = $null
+      while ((Get-Date) -lt $deadline) { if (Test-Path "SamTest:\Windows\Temp\sam-wmi-test-$stamp.txt") { Start-Sleep 1; $content = Get-Content "SamTest:\Windows\Temp\sam-wmi-test-$stamp.txt" -Raw; break }; Start-Sleep 1 }
+      if (-not $content) { throw "process created (PID $($ret.ProcessId)) but no output file appeared within 30s at $unc - script did not run or could not write" }
+      Remove-Item "SamTest:\Windows\Temp\sam-wmi-test-$stamp.txt" -ErrorAction SilentlyContinue
+      "PID $($ret.ProcessId) ran and wrote: " + $content.Trim()
+    } finally { Remove-PSDrive SamTest -ErrorAction SilentlyContinue }
+  }
+}
+
+# ---------- 4. WinRM execute (what SAM's PowerShell monitor 'Remote Host' mode uses) ----------
+Step 'WinRM-exec' {
+  $null = Test-WSMan -ComputerName $ComputerName -Credential $Credential -Authentication Default
+  $out = Invoke-Command -ComputerName $ComputerName -Credential $Credential -ScriptBlock { "$env:COMPUTERNAME as $([Environment]::UserName), PS $($PSVersionTable.PSVersion), ExecutionPolicy $(Get-ExecutionPolicy)" }
+  $out
+}
+
+# ---------- 5. the actual SAM log parse, run remotely over WinRM ----------
+if ($LogPath) {
+  Step 'SAM-parse' {
+    $parse = {
+      param($Path)
+      if (-not (Test-Path -LiteralPath $Path)) { "Message.Status: file not found $Path"; "Statistic.Status: 1"; exit 3 }
+      $lines = Get-Content -LiteralPath $Path -Tail 5000
+      $crit  = @($lines | Where-Object { $_ -match '\b(CRITICAL|FATAL)\b' })
+      $err   = @($lines | Where-Object { $_ -match '\bERROR\b' })
+      $warn  = @($lines | Where-Object { $_ -match '\bWARN(ING)?\b' })
+      "Message.Errors: $($err.Count) ERROR line(s) in last 5000 of $(Split-Path $Path -Leaf); last: $($err | Select-Object -Last 1)"
+      "Statistic.Errors: $($err.Count)"
+      "Message.Critical: $($crit.Count) CRITICAL/FATAL line(s); last: $($crit | Select-Object -Last 1)"
+      "Statistic.Critical: $($crit.Count)"
+      "Message.Warnings: $($warn.Count) WARN line(s)"
+      "Statistic.Warnings: $($warn.Count)"
+      if ($crit.Count -gt 0) { exit 3 } elseif ($err.Count -gt 0) { exit 2 } else { exit 0 }   # SAM: 0 Up, 1 Down, 2 Warning, 3 Critical
+    }
+    $o = Invoke-Command -ComputerName $ComputerName -Credential $Credential -ScriptBlock $parse -ArgumentList $LogPath
+    ($o -join ' | ')
+  }
+}
+
+if ($script:cim) { Remove-CimSession $script:cim -ErrorAction SilentlyContinue }
+Write-Host "`nSummary for $ComputerName"; $results.GetEnumerator() | ForEach-Object { "{0,-12} {1}" -f $_.Key, $_.Value }
+if ($results.Values -match '^FAIL') { exit 1 } else { exit 0 }

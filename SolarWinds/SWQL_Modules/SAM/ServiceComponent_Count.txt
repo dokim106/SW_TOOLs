@@ -1,0 +1,6 @@
+SELECT 
+    COUNT(ComponentID) AS [Services Monitored] 
+FROM
+   Orion.APM.Component
+WHERE 
+    ComponentType = 9

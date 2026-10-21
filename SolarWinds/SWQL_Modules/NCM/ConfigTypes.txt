@@ -1,0 +1,12 @@
+-- Select the configuration type name and whether it's a custom configuration from NCM.ConfigTypes
+
+SELECT 
+  Name,              -- Name of the configuration type
+  IsCustom AS [Is Custom]           -- Indicates if the configuration is custom
+
+FROM 
+  NCM.ConfigTypes    -- NCM.ConfigTypes table holds different configuration types
+
+-- Order the results by the unique identifier (Id) for each configuration type
+ORDER BY 
+  Id

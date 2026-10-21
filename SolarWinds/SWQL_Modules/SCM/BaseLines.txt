@@ -1,0 +1,4 @@
+SELECT 
+    COUNT(DISTINCT BaselineID) AS [Number of Baselines]
+FROM 
+    Orion.SCM.Baseline;

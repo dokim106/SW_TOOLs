@@ -1,0 +1,6 @@
+SELECT 
+count(*) as [Total Nodes]
+,sum(case when n.NodeProperties.EndOfSales is NULL then 1 end) as [EndOfSale Missing]
+,sum(case when n.NodeProperties.EndOfSupport is NULL then 1 end) as [EndofSupport Missing]
+from orion.nodes n
+

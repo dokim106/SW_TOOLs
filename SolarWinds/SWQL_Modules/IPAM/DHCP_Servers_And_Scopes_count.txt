@@ -1,0 +1,13 @@
+SELECT 
+    server.DisplayName AS [DHCP Server],  -- Displaying DHCP server names
+    COUNT(scope.DisplayName) AS [Scope Count]  -- Counting DHCP scopes associated with each server
+FROM 
+    Orion.Nodes AS n
+    -- Joining with IPAM.DhcpServer to link nodes to DHCP servers
+    JOIN IPAM.DhcpServer AS server ON server.NodeId = n.NodeID  
+    -- Joining with IPAM.DhcpScope to link DHCP servers to their scopes
+    JOIN IPAM.DhcpScope AS scope ON scope.NodeId = n.NodeID
+GROUP BY
+    server.DisplayName  -- Grouping results by DHCP server name for distinct counts
+ORDER BY
+    server.DisplayName;  -- Ordering results by DHCP server name for easier readability

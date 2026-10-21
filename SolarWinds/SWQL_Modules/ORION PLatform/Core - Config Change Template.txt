@@ -1,0 +1,14 @@
+SELECT 'TOTAL' as [Metric], count(*) as [Value] FROM Cirrus.ConfigSnippets
+
+union ALL (
+SELECT 'Template' as [Metric], count(*) as [Value] FROM Cirrus.ConfigSnippets where AdvancedScript like '%CHANGE_TEMPLATE_DESCRIPTION%'
+)
+
+union ALL (
+SELECT 'Custom' as [Metric], count(*) as [Value] FROM Cirrus.ConfigSnippets where AdvancedScript not like '%CHANGE_TEMPLATE_DESCRIPTION%'
+)
+
+union ALL (
+SELECT name as [Metric], null as [Value] FROM Cirrus.ConfigSnippets where AdvancedScript not like '%CHANGE_TEMPLATE_DESCRIPTION%'
+)
+

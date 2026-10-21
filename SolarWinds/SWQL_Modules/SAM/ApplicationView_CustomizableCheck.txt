@@ -1,0 +1,25 @@
+SELECT
+'No, use Default Application Detains View' as [Metric]
+,sum(case when isnull(v.Customizable,'N') = 'N' then 1 end) as [Count]
+FROM Orion.APM.ApplicationTemplate atemp
+left join orion.views v on v.ViewID=atemp.ViewID
+
+union all 
+(
+SELECT
+'Yes, create custom view' as [Metric]
+,sum(case when isnull(v.Customizable,'N') != 'N' then 1 end) as [Count]
+FROM Orion.APM.ApplicationTemplate atemp
+left join orion.views v on v.ViewID=atemp.ViewID
+)
+
+union all 
+(
+SELECT
+atemp.name as [c]
+,NULL as [v]
+FROM Orion.APM.ApplicationTemplate atemp
+left join orion.views v on v.ViewID=atemp.ViewID
+where isnull(v.Customizable,'N') != 'N'
+)
+

@@ -1,0 +1,48 @@
+select top 1 '=== DATABASE SETTINGS  ===' as [Metric],''  as [v] from orion.nodes
+
+union all (select 'Node Detailed' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue) else '' end) as [v] from orion.Settings where settingid = 'SWNetPerfMon-Settings-Retain Detail' group by currentvalue, units, DefaultValue )
+
+union all (select 'Node Hourly' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue) else '' end) as [v] from orion.Settings where settingid = 'SWNetPerfMon-Settings-Retain Hourly'  group by currentvalue, units, DefaultValue )
+
+union all (select 'Node Daily' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue) else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Retain Daily'  group by currentvalue, units, DefaultValue )
+
+union all (select top 1 '------' as [c] ,'------' as [v] from orion.nodes  )
+
+union all (select 'Container Detailed' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue) else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Retain Container Detail' group by currentvalue, units, DefaultValue )
+union all (select 'Container Hourly' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue) else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Retain Container Hourly' group by currentvalue, units, DefaultValue )
+union all (select 'Container Daily' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue) else '' end) as [v]from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Retain Container Daily' group by currentvalue, units, DefaultValue )
+
+union all (select top 1 '------' as [c] ,'------' as [v] from orion.nodes  )
+
+union all (select 'Interface Detailed' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_InterfaceAvailability_Retain_Detail' group by currentvalue, units, DefaultValue )
+union all (select 'Interface Hourly' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_InterfaceAvailability_Retain_Hourly' group by currentvalue, units, DefaultValue )
+union all (select 'Interface Daily' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_InterfaceAvailability_Retain_Daily' group by currentvalue, units, DefaultValue )
+
+union all (select top 1 '------' as [c] ,'------' as [v] from orion.nodes  )
+
+union all (select 'Delete Stale Interface' as [c], (case when CurrentValue=1 then 'YES <NO)' else 'No' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_StaleInterfaces_RemovalEnabled' group by currentvalue, units )
+union all (select 'Delete Interface After' as [c] , concat(CurrentValue,' ',Units) as [v] from Orion.Settings  where settingid = 'NPM_Settings_StaleInterfaces_RemovalIntervalDays' group by currentvalue, units )
+union all (select 'Delete Stale Volumes' as [c], (case when CurrentValue=1 then 'YES <NO' else 'No' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-StaleVolume-RemovalEnabled' group by currentvalue, units )
+union all (select 'Delete Volumes After' as [c], concat(CurrentValue,' ',Units) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-StaleVolume-RemovalIntervalDays' group by currentvalue, units )
+
+union all (select top 1 '------' as [c] ,'------' as [v] from orion.nodes  )
+
+union all (select 'UnDP Detailed' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_UnDP_Retain_Detail' group by currentvalue, units, DefaultValue )
+union all (select 'UnDP Hourly' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_UnDP_Retain_Hourly' group by currentvalue, units, DefaultValue )
+union all (select 'UnDP Daily' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_UnDP_Retain_Daily' group by currentvalue, units, DefaultValue )
+
+union all (select top 1 '------' as [c] ,'------' as [v] from orion.nodes  )
+
+union all (select 'Wireless Detailed' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_Wireless_Retain_Detail' group by currentvalue, units, DefaultValue )
+union all (select 'Wireless Hourly' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_Wireless_Retain_Hourly' group by currentvalue, units, DefaultValue )
+union all (select 'Wireless Daily' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'NPM_Settings_Wireless_Retain_Daily' group by currentvalue, units, DefaultValue )
+union all (select 'Disappeared AP Retention' as [c],concat(CurrentValue,' days') as [v] from Orion.Settings where settingid= 'NPM_Settings_Wireless_Retain_Disappeared_AccessPoints')
+
+union all (select top 1 '------' as [c] ,'------' as [v] from orion.nodes  )
+
+union all (select 'Events Retention' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Retain Events' group by currentvalue, units, DefaultValue )
+union all (select 'Auditing Trail' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Retain Auditing Trails' group by currentvalue, units, DefaultValue )
+union all (select 'Syslog' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings where settingid = 'SysLog-MaxMessageAge' group by currentvalue, units, DefaultValue )
+union all (select 'Traps' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'Trap-MaxMessageAge' group by currentvalue, units, DefaultValue )
+union all (select 'Baseline' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>DefaultValue then concat(' <',defaultvalue,')') else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Baseline Collection Duration' group by currentvalue, units, DefaultValue )
+union all (select 'Node Warning Level' as [c], concat(CurrentValue,' ',Units,case when CurrentValue<>120 then ' <120)' else '' end) as [v] from Orion.Settings  where settingid = 'SWNetPerfMon-Settings-Default Fast Poll Interval'  group by currentvalue, units )

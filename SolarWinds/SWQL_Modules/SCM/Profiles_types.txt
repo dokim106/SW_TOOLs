@@ -1,0 +1,15 @@
+SELECT 
+    CASE 
+        WHEN BuiltIn = 'True' THEN 'Out of the Box'
+        ELSE 'Custom'
+    END AS [Profile Type],  -- Column 1: Profile Type (Custom or Out of the Box)
+    COUNT(*) AS [Count of Profiles]
+FROM 
+    Orion.SCM.Profiles
+WHERE 
+    ManagedExternally != 'True'
+GROUP BY 
+    CASE 
+        WHEN BuiltIn = 'True' THEN 'Out of the Box'
+        ELSE 'Custom'
+    END;

@@ -1,0 +1,4 @@
+SELECT 
+    -- Count of mismatched DNS's
+    COUNT(*) AS [DNS Mismatch Count]
+FROM IPAM.DNSMismatch

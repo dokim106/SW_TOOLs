@@ -1,0 +1,4 @@
+SELECT 
+  Count(NodeID) AS [FIM Disabled Count] 
+FROM 
+  Orion.SCM.FimDisabledNodes

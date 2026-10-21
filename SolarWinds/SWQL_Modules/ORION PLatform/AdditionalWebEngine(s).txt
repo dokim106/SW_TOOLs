@@ -1,0 +1,11 @@
+SELECT 
+    w.ServerName AS [Hostname], 
+    n.IPAddress AS [IP Address], 
+    w.Port, 
+    CASE WHEN w.SSLEnabled = 1 THEN 'Yes' ELSE 'No' END AS [SSL Enabled] 
+FROM 
+    Orion.Websites as w
+JOIN
+    orion.Nodes as n on w.ServerName = n.SysName
+WHERE 
+    w.Type = 'Additional';

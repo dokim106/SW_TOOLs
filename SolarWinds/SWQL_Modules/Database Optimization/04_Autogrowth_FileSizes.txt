@@ -1,0 +1,9 @@
+SELECT db_name(database_id) AS database_name,
+       name AS file_name,
+       type_desc AS file_type,
+       size*8/1024 AS size_mb,
+       growth, 
+       CASE WHEN is_percent_growth = 1 THEN 'PERCENT' ELSE 'MB' END AS growth_type,
+       growth*8/1024 AS growth_mb
+FROM sys.master_files
+WHERE database_id = DB_ID('YourSolarWindsDatabaseName');

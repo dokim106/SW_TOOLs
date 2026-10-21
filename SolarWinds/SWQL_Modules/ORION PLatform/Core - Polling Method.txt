@@ -1,0 +1,5 @@
+select 
+ObjectSubType as [Polling Method]
+,count(*) as [Count]
+from orion.Nodes
+group by ObjectSubType 

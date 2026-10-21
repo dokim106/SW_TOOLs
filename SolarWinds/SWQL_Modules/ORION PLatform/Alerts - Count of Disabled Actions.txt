@@ -1,0 +1,3 @@
+SELECT COUNT(*) AS [Number of Disabled Actions]
+FROM Orion.Actions
+WHERE Enabled = 'False'

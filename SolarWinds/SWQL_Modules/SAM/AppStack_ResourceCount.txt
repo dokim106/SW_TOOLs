@@ -1,0 +1,7 @@
+-- This query counts the number of 'AppStack Environment' widgets in the Orion.Resources table
+SELECT 
+    COUNT(ResourceID) AS [AppStack Widgets]  -- Provides a count of AppStack widgets based on the resource name
+FROM 
+    Orion.Resources
+WHERE 
+    ResourceName LIKE 'AppStack Environment for%'  -- Filters for resources starting with 'AppStack Environment for'

@@ -1,0 +1,11 @@
+SELECT TOP 100
+  n.caption,
+  n.ipaddress,
+  CASE WHEN asa.NodeID IS NOT NULL THEN 'yes' ELSE 'no' END AS [ASA Enabled],
+  CASE WHEN nexus.NodeID IS NOT NULL THEN 'yes' ELSE 'no' END AS [Nexus Enabled],
+  CASE WHEN f5.NodeID IS NOT NULL THEN 'yes' ELSE 'no' END AS [Big IP Enabled]
+FROM Orion.Nodes n
+LEFT JOIN Orion.ASA.Node asa ON asa.NodeID = n.NodeID
+LEFT JOIN Orion.Nexus.VirtualPortChannel nexus ON nexus.NodeID = n.NodeID
+LEFT JOIN Orion.F5.System.Device f5 ON f5.NodeID = n.NodeID
+WHERE asa.NodeID IS NOT NULL OR nexus.NodeID IS NOT NULL OR f5.NodeID IS NOT NULL

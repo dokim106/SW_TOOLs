@@ -1,0 +1,34 @@
+select a.metric, a.v from (
+select 'Total Alerts' as [Metric],concat(count(*),'') as [v], 1 as [o] from orion.AlertDefinitions
+Union all (select 'Enabled Alerts' as [c], concat(count(*),'') as [v], 2 as [o] from orion.AlertDefinitions where enabled=1)
+union all (select 'Active Alerts' as [c] , concat(count(*),'') as [v], 3 as [o] from orion.AlertActive)
+union all (select 'Oldest Alert' as [c],  concat(min(tolocal(TriggeredDateTime)),'') as [v], 4 as [o] from orion.AlertActive)
+union all (select 'Newest Alert' as [c] , concat(max(tolocal(TriggeredDateTime)),'') as [v], 5 as [o] from orion.AlertActive)
+
+union all (select top 1 '=== ALERT Triggers ===' as [c], 'Last 7 days' as [v], 6 as [o] from orion.nodes)
+
+union ALL(
+SELECT concat(YEAR(ah.TimeStamp),'-',MONTH(ah.TimeStamp),'-',day(ah.TimeStamp)) as [date]
+,tostring(isnull(count(*),0)) as [Triggered], 7 as [o]
+FROM   orion.AlertHistory ah
+where  DAYDIFF(tolocal(ah.timestamp), GETDATE()) <7
+       AND ah.eventtype=0
+       group by concat(YEAR(ah.TimeStamp),'-',MONTH(ah.TimeStamp),'-',day(ah.TimeStamp))
+) 
+
+union all (select top 1 '=== Triggered NODE Top 5 ===' as [c], 'Last 7 days' as [v], 8 as [o] from orion.nodes)
+
+union all (
+SELECT top 5 n.caption as [a]
+,tostring(isnull(count(*),0))  as [Triggered], 9 as [o]
+FROM orion.AlertHistory ah
+join orion.AlertObjects ao on ao.AlertObjectID=ah.AlertObjectID
+join orion.nodes n on n.nodeid=ao.RelatedNodeId
+where  DAYDIFF(tolocal(ah.TimeStamp),GETDATE()) <=7 and n.caption is not null 
+AND ah.eventtype=0
+group by n.caption
+order by count(case when ah.eventtype=0 then 1 else null end) desc
+)
+) a
+
+order by a.o

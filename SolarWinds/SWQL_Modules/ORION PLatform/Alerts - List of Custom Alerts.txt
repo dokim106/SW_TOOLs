@@ -1,0 +1,7 @@
+SELECT Name, 
+ObjectType AS [Object Type], 
+Enabled, 
+CreatedBy AS [Creator]
+FROM Orion.AlertConfigurations
+WHERE Canned = 'False'
+ORDER BY ObjectType, Enabled, Name

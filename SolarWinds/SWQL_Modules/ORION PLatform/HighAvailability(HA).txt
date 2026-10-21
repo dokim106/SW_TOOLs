@@ -1,0 +1,15 @@
+SELECT 
+    p.Pool.DisplayName as [Pool Name],
+    CASE
+        WHEN p.Priority = 0 THEN 'Active'
+        ELSE 'Standby'
+    END AS [Status],
+    CASE
+        WHEN p.PoolMemberType LIKE '%Main%' THEN 'Main'
+        ELSE 'Additional'
+    END AS [Polling Engine Type],
+    p.HostName AS [Server Name],
+    p.PrimaryIpAddress,
+    p.Engine.EngineVersion
+FROM 
+    Orion.HA.PoolMembers AS p

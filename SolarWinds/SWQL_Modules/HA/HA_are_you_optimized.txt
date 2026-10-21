@@ -1,0 +1,45 @@
+SELECT
+  p.PoolId,
+  p.DisplayName                 AS PoolName,
+  p.VirtualIpAddress            AS VirtualIP,
+  p.Enabled                     AS PoolEnabled,
+  p.CurrentStatus               AS PoolStatus,
+  p.CurrentStatusTimestamp,
+
+  pm.PoolMemberId,
+  pm.HostName                   AS MemberHost,
+  pm.PreferredStatus            AS IsPreferred,
+  pm.Status                     AS MemberStatus,
+  pm.LastHeartBeatTimestamp,
+
+  ri.IP                         AS ReachableIP,
+  ri.EngineId                   AS ReachableEngineId,
+  ri.IsVirtual                  AS IsVirtual,
+  ri.CanActAsEngines            AS HA_Capable,
+
+  res.CurrentStatus             AS ResourceStatus,
+  fac.CurrentStatus             AS FacilityStatus,
+
+  -- Debug: check if joins are null
+  CASE WHEN pm.PoolMemberId IS NULL THEN '❌' ELSE '✅' END AS HasMember,
+  CASE WHEN ri.HostName IS NULL THEN '❌' ELSE '✅' END AS ReachabilityLinked,
+  CASE WHEN res.RefId IS NULL THEN '❌' ELSE '✅' END AS ResourcesLinked,
+  CASE WHEN fac.RefId IS NULL THEN '❌' ELSE '✅' END AS FacilitiesLinked
+
+FROM Orion.HA.Pools p
+LEFT JOIN Orion.HA.PoolMembers pm
+  ON p.PoolId = pm.PoolId
+
+LEFT JOIN Orion.HA.ReachabilityInfo ri
+  ON pm.HostName = ri.HostName
+
+LEFT JOIN Orion.HA.ResourcesInstances res
+  ON res.PoolMemberId = pm.PoolMemberId
+
+LEFT JOIN Orion.HA.FacilitiesInstances fac
+  ON fac.PoolMemberId = pm.PoolMemberId
+
+-- 🔁 Removed filter: WHERE p.Enabled = true
+-- 🔁 Keep all pools, even disabled or partially configured
+
+ORDER BY p.DisplayName, pm.HostName

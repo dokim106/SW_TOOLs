@@ -1,0 +1,9 @@
+SELECT 
+    Count(NodeID) AS [Monitored Node Count]  -- Column: Count of NodeID, renamed as Monitored Node Count
+
+FROM 
+    Orion.SCM.ServerConfiguration  -- Source table: ServerConfiguration in Orion SCM
+
+WHERE 
+    Enabled = 'True';  -- Filter criteria: Only count nodes where Enabled is 'True'
+

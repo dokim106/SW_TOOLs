@@ -1,0 +1,29 @@
+-- Select the total number of firmware definitions, author, and canned status from NCM.FirmwareDefinitions
+--SELECT 
+--  COUNT(ID) AS [Total],         -- Count the total number of firmware definitions
+--  Author,                       -- Author of the firmware definition
+--  Canned                        -- Indicates if the firmware definition is canned (predefined) (1 = Yes, 0 = No)
+--FROM 
+--  NCM.FirmwareDefinitions        -- NCM.FirmwareDefinitions table stores firmware information
+--GROUP BY 
+--  Canned,                        -- Group by canned status (predefined or custom firmware)
+--  Author                         -- Group by author to show totals per author
+-- End of query
+
+SELECT
+  'Device Template' as [Device Template],
+  SUM(CASE WHEN canned=1 THEN 1 END) as [Canned],
+  SUM(CASE WHEN canned=0 THEN 1 END) as [Not_Canned]
+FROM
+  NCM.FirmwareDefinitions
+UNION ALL
+(
+SELECT
+  Name as [c],
+  NULL as [v],
+  NULL as [v1]
+FROM
+  NCM.FirmwareDefinitions
+WHERE
+  canned=0
+);

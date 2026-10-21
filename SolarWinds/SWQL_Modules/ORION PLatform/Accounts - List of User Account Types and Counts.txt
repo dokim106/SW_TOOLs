@@ -1,0 +1,12 @@
+SELECT CASE
+WHEN AccountType = 1 THEN 'Local Account'
+WHEN AccountType = 2 THEN 'Windows Individual Account'
+WHEN AccountType = 3 THEN 'Windows Group Account'
+WHEN AccountType = 5 THEN 'SAML Individual Account'
+WHEN AccountType = 6 THEN 'SAML Group Account'
+END AS AccountType,
+COUNT(*) AS Number
+FROM Orion.Accounts
+WHERE AccountType IN (1,2,3,5,6)
+GROUP BY AccountType
+

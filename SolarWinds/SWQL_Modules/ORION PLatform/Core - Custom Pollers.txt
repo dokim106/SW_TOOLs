@@ -1,0 +1,19 @@
+select top 1 '=== UnDP ===' as [Metric],'' as [Value] from orion.nodes
+union all (SELECT 'TOTAL UnDP' as [c], concat(isnull(count(*),0),'')  as [v]from orion.npm.CustomPollers )
+union all (SELECT 'Enabled UnDP' as [c], concat(isnull(count(*),0),'') as [v] from orion.npm.CustomPollers where enabled=1 )
+
+union all (select top 1 '=== UnDP: Poller, num of nodes, interval ===' as [c],'' as [v] from orion.nodes)
+
+union all 
+(
+SELECT 
+concat('UnDP: ',cp.GroupName,' - ',cpa.custompollername) as [c]
+,case when cp.PollInterval != 0 then concat(isnull(count(cpa.nodeid),0),' nodes  at ',cp.PollInterval,' mins')
+     else concat(isnull(count(cpa.nodeid),0),' nodes  at ',n.StatCollection,' mins')
+end as [v]
+from orion.npm.CustomPollerAssignment cpa
+join orion.npm.custompollers cp on cp.CustomPollerID=cpa.CustomPollerID 
+join orion.nodes n on n.nodeid=cpa.NodeID
+where cpa.status=1 
+group by cpa.CustomPollerName, cp.GroupName, cp.PollInterval, n.StatCollection
+)

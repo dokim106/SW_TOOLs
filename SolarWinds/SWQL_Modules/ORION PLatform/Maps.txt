@@ -1,0 +1,10 @@
+SELECT top 1 '=== World Map ===' as [c], ' ' as [v] from orion.nodes
+union all (SELECT 'Automatic Geolocation' as [c],case when CurrentValue=1 then 'ENABLED' else 'DISABLED' end as [v] FROM orion.Settings where settingid='AutomaticGeolocation-Enable')
+
+union all (select 'World Map Nodes' as [c], concat(isnull(count(*),0),'') as [v] from orion.WorldMap.Point  as [v] where Instance='Orion.Nodes')
+union all (select 'World Map Groups' as [c], concat(isnull(count(*),0),'') as [v] from orion.WorldMap.Point  as [v] where Instance='Orion.Groups')
+union all (select 'World Map Maps' as [c], concat(isnull(count(*),0),'') as [v] from orion.WorldMap.Point  as [v] where Instance='Orion.WorldMap.PointLabel')
+
+
+union all (SELECT top 1 '=== Orion Maps ===' as [c], ' ' as [d]  from orion.nodes)
+union all (SELECT [AccountID] as [c], concat(isnull(count(*),0),' maps') as [v] FROM orion.Maps.Projects group by accountid)

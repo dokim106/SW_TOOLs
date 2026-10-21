@@ -1,0 +1,7 @@
+SELECT 
+    'Total Components Count'    AS [Application Name],
+    ''                          AS [Nodes Count],
+    ToString(COUNT(DISTINCT c.ComponentID)) AS [Components Count],
+    ''                          AS [Template Name]
+FROM 
+    Orion.APM.Component AS c;

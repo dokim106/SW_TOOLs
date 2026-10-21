@@ -1,0 +1,23 @@
+{
+ "id": "doom",
+ "title": "DOOM",
+ "entry": "index.html",
+ "keys": "Click the game, then Enter. Arrows move, Ctrl fires, Space opens doors, Alt+arrows strafe, Esc menu.",
+ "license": "engine GPL-2.0 (id Software linuxdoom-1.10, wasm port by diekmann); shareware doom1.wad (freely distributable)",
+ "source": "https://diekmann.github.io/wasm-fizzbuzz/doom/",
+ "added": "2026-10-18",
+ "files": {
+  "doom.wasm": "568bb18489f9071957f133d7d12ed6d753dfd27a62733442fd80261a217df3f1",
+  "index.html": "9a1c0b841f620c6f4e7ccc7481442b0249ab69e9ffe1cf5d4e5cefb4aa4223cb",
+  "main.js": "697ba93c2616c113565cec782d2e939c9b96f698d2fc699fdd48e974d877f3ab",
+  "no-lurch.js": "9c4f5280d3cdde8feda4c1f6725cd307b0262d4820eb82d911670e8f08d7d54c"
+ },
+ "size": 6854400,
+ "csp": {
+  "eval": false,
+  "inline": false
+ },
+ "notes": [
+  "index.html loads no-lurch.js (Arcade copy only): keeps the engine log from scrolling the Arcade bar away"
+ ]
+}

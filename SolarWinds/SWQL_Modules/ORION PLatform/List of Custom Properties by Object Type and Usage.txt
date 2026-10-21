@@ -1,0 +1,18 @@
+SELECT Field AS [Custom Property Name],
+Description,
+cp.Usage.Table AS [Object Type], 
+CASE
+WHEN DataType = 'nvarchar' THEN 'Text'
+WHEN DataType = 'bit' THEN 'Yes/No'
+WHEN DataType = 'real' THEN 'Floating Point Number'
+WHEN DataType = 'int' THEN 'Integer Number'
+WHEN DataType = 'datetime' THEN 'Date/Time'
+END AS [Format],
+Mandatory,
+CASE WHEN cp.Usage.IsForAlerting = 'True' THEN 'X' ELSE '' END AS [Used for Alerting],
+CASE WHEN cp.Usage.IsForFiltering = 'True' THEN 'X' ELSE '' END AS [Used for Filtering],
+CASE WHEN cp.Usage.IsForGrouping = 'True' THEN 'X' ELSE '' END AS [Used for Grouping],
+CASE WHEN cp.Usage.IsForReporting = 'True' THEN 'X' ELSE '' END AS [Used for Reporting],
+CASE WHEN cp.Usage.IsForEntityDetail = 'True' THEN 'X' ELSE '' END AS [Used for Object Details Views]
+FROM Orion.CustomProperty cp
+ORDER BY Table, Field

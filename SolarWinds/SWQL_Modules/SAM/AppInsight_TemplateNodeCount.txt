@@ -1,0 +1,11 @@
+-- This query retrieves a count of nodes assigned to each application template whose name contains 'appinsight',
+-- grouping the results by template name.
+SELECT 
+    app.Template.Name AS [Template Name],  -- Providing a clearer alias for the column
+    COUNT(app.NODEID) AS [Assigned Node Count]  -- Counts the number of nodes per application template
+FROM 
+    Orion.APM.Application AS app
+WHERE 
+    app.Template.Name LIKE '%appinsight%'  -- Filters templates that include 'appinsight' in their name
+GROUP BY 
+    app.Template.Name  -- Groups results by template name

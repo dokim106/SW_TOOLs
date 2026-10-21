@@ -1,0 +1,145 @@
+function Connect-SolarWinds {
+    
+    <#
+    .SYNOPSIS
+        Connects to the SolarWinds Information Service (SWIS) using specified credentials.
+    
+    .DESCRIPTION
+        This function establishes a connection to the SolarWinds Information Service (SWIS) on a given SolarWinds server. 
+        The function takes the hostname of the server, a username, and a password as input parameters. If the connection fails, 
+        it will throw an error and return null.
+    
+    .PARAMETER Hostname
+        The hostname or IP address of the SolarWinds server.
+    
+    .PARAMETER Username
+        The username used to authenticate the connection to the SolarWinds server.
+    
+    .PARAMETER Password
+        The password associated with the provided username for authentication.
+    
+    .EXAMPLE
+        PS> Connect-SolarWinds -Hostname "solarwinds-server1" -Username "admin" -Password "<password>"
+    
+        Connects to the SolarWinds server 'solarwinds-server1' using the credentials 'admin' and 'password'.
+    
+    .EXAMPLE
+        PS> $connection = Connect-SolarWinds -Hostname "<SolarWinds server>" -Username "<username>" -Password "<password>"
+    
+        Stores the connection object to the SolarWinds server '<SolarWinds server>' in the variable $connection.
+    
+    .NOTES
+        Author: Ryan Woolsey
+        Last Edit: 9-20-2024
+        Version: 1.1
+        Keywords: SolarWinds, OrionSDK, PowerShell, SWIS
+    
+    .LINK
+        https://github.com/solarwinds/OrionSDK/wiki/PowerShell
+    
+    .REQUIRES
+        # Requires -Version 5.1
+        # Requires -Modules OrionSDK
+    
+    #>
+
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true, 
+                   HelpMessage = "Enter the hostname or IP address of the SolarWinds server.")]
+        [string]$Hostname,
+
+        [Parameter(Mandatory = $true, 
+                   HelpMessage = "Enter the username for authentication.")]
+        [string]$Username,
+
+        [Parameter(Mandatory = $true, 
+                   HelpMessage = "Enter the password for the provided username.")]
+        [string]$Password
+    )
+
+    # Build the connection parameters for SWIS
+    $swisParams = @{
+        Hostname = $Hostname
+        UserName = $Username
+        Password = $Password
+        ErrorAction = 'Stop'  # Stops the function if an error occurs
+    }
+
+    # Attempt to connect to SWIS
+    try {
+        # The Connect-Swis cmdlet is used to establish a connection to the SolarWinds server
+        return Connect-Swis @swisParams
+    }
+    catch {
+        # If the connection fails, output an error message with the reason for the failure
+        Write-Error "Failed to connect to SWIS: $_"
+        return $null
+    }
+}
+
+function Get-NCMConnectionProfiles {
+    param (
+        [string]$Name  # Allow filtered name
+    )
+
+    # Invoke the SWIS API to get all connection profiles
+    $results = Invoke-SwisVerb $swis 'Cirrus.Nodes' 'GetAllConnectionProfiles' @()
+
+    # Load the System.Web assembly to handle HTML decoding
+    Add-Type -AssemblyName System.Web
+
+    # Filter the profiles based on the name, if a filter is provided
+    $filteredProfile = if ($Name) {
+        $results.ConnectionProfile | Where-Object { $_.Name -like "*$Name*" }
+    }
+    else {
+        $results.ConnectionProfile
+    }
+
+    # Initialize an array to store the results
+    $resultsTable = @()
+
+    # Process each profile and extract the relevant fields
+    $filteredProfile | ForEach-Object {
+        $resultsTable += [pscustomobject][ordered]@{
+            ProfileName = $_.Name.InnerXml
+            UserName = $_.ConnectionData.UserName.InnerXml
+            Password = $_.ConnectionData.Password.InnerXml
+            EnableLevel = [System.Web.HttpUtility]::HtmlDecode($_.ConnectionData.EnableLevel.InnerXml)
+            EnablePassword = $_.ConnectionData.EnablePassword.InnerXml
+            ExecuteScriptProtocol = $_.ExecuteScriptProtocol.InnerXml
+            RequestConfigProtocol = $_.RequestConfigProtocol.InnerXml
+            TransferConfigProtocol = $_.TransferConfigProtocol.InnerXml
+            TelnetPort = $_.ConnectionData.TelnetPort
+            SSHPort = $_.ConnectionData.SSHPort
+            UseForAutoDetect = $_.UseForAutoDetect
+        }
+    }
+
+    # Return the results table formatted as a list
+    return $resultsTable | Format-List
+}
+
+
+$Username = 'L1SENG\RWoolsey'
+$Password = 'ExamplePass1!'
+$MPE = 'orion.example.net'
+
+$swis = Connect-SolarWinds -Hostname $MPE -Username $Username -Password $Password
+
+Get-NCMConnectionProfiles 
+
+
+
+
+
+<# Possible SWQL Query 
+SELECT
+COUNT(NodeID) AS TotalNodeCount, -- Counts the total number of nodes
+SUM(CASE WHEN LoginStatus = 'Login OK' THEN 1 ELSE 0 END) AS LoginOKCount, -- Count of 'Login OK'
+SUM(CASE WHEN LoginStatus LIKE '%Connection Refused%' THEN 1 ELSE 0 END) AS ConnectionRefusedCount, -- Count of LoginStatus containing 'Connection Refused'
+SUM(CASE WHEN UseHTTPS = 'True' THEN 1 ELSE 0 END) AS HTTPSCountTrue, -- Count of 'true' values for UseHTTPS
+SUM(CASE WHEN UseHTTPS = 'False' THEN 1 ELSE 0 END) AS HTTPSCountFalse -- Count of 'false' values for UseHTTPS
+FROM Cirrus.NodeProperties
+#>

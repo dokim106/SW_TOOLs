@@ -1,0 +1,45 @@
+-- Select NCM Job Name, its description based on job type, and whether the job is enabled
+
+SELECT 
+  NCMJobName,                         -- Name of the NCM job
+
+  -- Translate NCMJobType to a human-readable description using a CASE statement
+  CASE 
+    WHEN NCMJobType = 0  THEN 'Command Script'
+    WHEN NCMJobType = 1  THEN 'Execute Program'
+    WHEN NCMJobType = 2  THEN 'Upload Configurations'
+    WHEN NCMJobType = 3  THEN 'Report'
+    WHEN NCMJobType = 4  THEN 'Reboot Devices'
+    WHEN NCMJobType = 5  THEN 'Export Configurations'
+    WHEN NCMJobType = 6  THEN 'NCM Database Maintenance'
+    WHEN NCMJobType = 7  THEN 'Inventory'
+    WHEN NCMJobType = 8  THEN 'Config Change Reports'
+    WHEN NCMJobType = 9  THEN 'Compliance Policy Reports'
+    WHEN NCMJobType = 10 THEN 'Purge Configurations'
+    WHEN NCMJobType = 11 THEN 'Download Configurations'
+    WHEN NCMJobType = 12 THEN 'Real-Time Notifications'
+    WHEN NCMJobType = 13 THEN 'Orion Import'
+    WHEN NCMJobType = 14 THEN 'Baseline Entire Network'
+    WHEN NCMJobType = 15 THEN 'Config Change Template'
+    WHEN NCMJobType = 16 THEN 'Error'
+    ELSE 'Unknown'                    -- Default case when job type doesn't match any known values
+  END AS [Description],               -- Description column translating NCMJobType values
+
+  Enabled,                             -- Indicates if the job is enabled (1 = Yes, 0 = No)
+
+  -- Translate Status to a human-readable description using a CASE statement
+  CASE 
+    WHEN Status = 0  THEN 'Queued'
+    WHEN Status = 1  THEN 'Transferring'
+    WHEN Status = 2  THEN 'Complete'
+    WHEN Status = 3  THEN 'Error'
+    ELSE 'Unknown'                    -- Default case when status doesn't match any known values
+  END AS [Last Run Status]               -- Description column translating Status values
+
+
+FROM 
+  Cirrus.NCM_NCMJobsView                  -- Table storing NCM job definitions
+
+-- Sort results by enabled status in descending order, showing enabled jobs first
+ORDER BY 
+  Enabled DESC

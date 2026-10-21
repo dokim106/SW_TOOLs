@@ -1,0 +1,4 @@
+SELECT Name, Owner
+FROM Orion.Report
+WHERE Owner IS NOT NULL
+ORDER BY Owner, Name

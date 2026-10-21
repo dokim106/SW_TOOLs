@@ -1,0 +1,31 @@
+-- Select the vulnerability level (High, Medium, Low) and the total count of vulnerabilities for each level
+
+SELECT 
+  CASE 
+    WHEN score >= 7 THEN 'High'         -- Vulnerability level is High for scores 7 and above
+    WHEN score >= 4 AND score < 7 THEN 'Medium' -- Vulnerability level is Medium for scores between 4 and 7
+    ELSE 'Low'                          -- Vulnerability level is Low for scores below 4
+  END AS [Vulnerability Level],          -- Create a new column for vulnerability level
+  
+  COUNT(*) AS [Total Vulnerabilities]    -- Count the total vulnerabilities for each level
+
+FROM 
+  ncm.VulnerabilitiesAnnouncements y     -- Vulnerabilities announcements table for score data
+
+JOIN 
+  ncm.VulnerabilitiesAnnouncementsNodes v ON v.EntryId = y.EntryId  -- Join with nodes to associate vulnerabilities with nodes
+
+GROUP BY 
+  CASE 
+    WHEN score >= 7 THEN 'High'          -- Group by the newly created vulnerability level column
+    WHEN score >= 4 AND score < 7 THEN 'Medium'
+    ELSE 'Low'
+  END
+
+-- Order the result to show the highest level vulnerabilities first
+ORDER BY 
+  CASE 
+    WHEN score >= 7 THEN 'High'          
+    WHEN score >= 4 AND score < 7 THEN 'Medium'
+    ELSE 'Low'
+  END

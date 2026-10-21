@@ -1,0 +1,11 @@
+SELECT 'OOTB Reports' AS [Report Type],
+COUNT(*) AS [Number]
+FROM Orion.Report
+WHERE Owner IS NULL
+
+UNION ALL
+
+(SELECT 'Custom Reports' AS [Report Type],
+COUNT(*) AS [Number]
+FROM Orion.Report
+WHERE Owner IS NOT NULL)

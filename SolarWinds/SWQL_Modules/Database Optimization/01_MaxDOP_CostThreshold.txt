@@ -1,0 +1,4 @@
+SELECT name AS configuration_name,
+       value_in_use
+FROM sys.configurations
+WHERE name IN ('max degree of parallelism', 'cost threshold for parallelism');

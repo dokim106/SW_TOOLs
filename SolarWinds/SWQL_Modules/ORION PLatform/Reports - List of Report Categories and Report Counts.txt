@@ -1,0 +1,4 @@
+SELECT Category, COUNT(*) AS [Number]
+FROM Orion.Report
+GROUP BY Category
+ORDER BY Category

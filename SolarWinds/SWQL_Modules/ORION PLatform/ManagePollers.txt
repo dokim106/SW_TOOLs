@@ -1,0 +1,8 @@
+SELECT
+REPLACE(Replace(Replace(PollerType,'.native', ''),'N.',''),'.','-') AS [Poller Type], 
+count(pollerid) as [Total]
+FROM Orion.Pollers
+where PollerType = 'N.Status.Agent.Native' 
+OR PollerType = 'N.Status.ICMP.Native'
+OR PollerType = 'N.Status.SNMP.Native'
+group by pollertype

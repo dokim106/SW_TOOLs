@@ -1,0 +1,16 @@
+-- Retrieves comprehensive details about all engines within the Orion platform, including server types,
+-- names, IP addresses, and various counts of associated network elements.
+SELECT 
+    ServerType AS [Server Type],   -- Clearly labeled for better understanding of the data.
+    ServerName AS [Server Name],   -- Provides the name of the server.
+    IP AS [IP Address],            -- Displays the IP address of each engine.
+    Elements AS [Total Elements],  -- The total number of elements managed by the engine.
+    Nodes AS [Total Nodes],        -- The total number of nodes managed.
+    Interfaces AS [Total Interfaces],  -- The total number of interfaces managed.
+    Volumes AS [Total Volumes],    -- The total number of volumes managed.
+    Pollers AS [Total Pollers],    -- The total number of pollers.
+    PollingCompletion AS [Polling Completion]  -- Indicates the completion status of polling.
+FROM 
+    Orion.Engines
+ORDER BY 
+    ServerType, ServerName;  -- Orders results by Server Type and Server Name for easier navigation.

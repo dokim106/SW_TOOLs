@@ -1,0 +1,8 @@
+-- This query retrieves the count of each integration type within the Orion SAM AppOptics integrations
+SELECT 
+    IntegrationType AS [Integration],  -- Clear alias for the type of integration
+    COUNT(*) AS [Count]               -- Counts the instances of each integration type
+FROM 
+    Orion.SamAppOptics.Integration
+GROUP BY 
+    IntegrationType                   -- Groups results by the type of integration

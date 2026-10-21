@@ -1,0 +1,51 @@
+SELECT Type, Number FROM (SELECT 'OOTB Classic Views' AS [Type],
+COUNT(*) AS [Number]
+FROM Orion.Views
+WHERE IsActive = 'True' AND (System = 'Y' OR System = '1')
+
+UNION ALL
+
+(SELECT 'Custom Classic Views' AS [Type],
+COUNT(*) AS [Number]
+FROM Orion.Views
+WHERE IsActive = 'True' AND (System = 'N' OR System = '0'))
+
+UNION ALL
+
+(SELECT 'Total Classic Views' AS [Type],
+COUNT(*) AS [Number]
+FROM Orion.Views
+WHERE IsActive = 'True')
+
+UNION ALL
+
+(SELECT 'OOTB Modern Views' AS [Type],
+COUNT(*) AS [Total Number]
+FROM Orion.Dashboards.Instances
+WHERE IsActive = 'True'
+AND Owner = '_system' AND IsSystem = 'True')
+
+UNION ALL
+
+(SELECT 'Custom Modern Views' AS [Type],
+COUNT(*) AS [Total Number]
+FROM Orion.Dashboards.Instances
+WHERE IsActive = 'True'
+AND Owner != '_system')
+
+UNION ALL
+
+(SELECT 'Total Modern Views' AS [Type],
+COUNT(*) AS [Total Number]
+FROM Orion.Dashboards.Instances
+WHERE IsActive = 'True'
+AND ((Owner = '_system' AND IsSystem = 'True') OR Owner != '_system')))
+
+ORDER BY CASE
+WHEN Type = 'OOTB Classic Views' THEN 1
+WHEN Type = 'Custom Classic Views' THEN 2
+WHEN Type = 'Total Classic Views' THEN 3
+WHEN Type = 'OOTB Modern Views' THEN 4
+WHEN Type = 'Custom Modern Views' THEN 5
+WHEN Type = 'Total Modern Views' THEN 6
+END

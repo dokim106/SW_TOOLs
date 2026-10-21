@@ -1,0 +1,9 @@
+-- Query to get the total number of custom snippets from the SnippetArchive table
+-- Can be found at /Orion/NCM/SnippetManagement.aspx
+
+SELECT 
+  'Custom Snippets' AS [Title],    -- Static label for the title, representing custom snippets
+  COUNT(ConfigID) AS [Total]       -- Count the total number of custom snippets based on ConfigID
+
+FROM 
+  Cirrus.SnippetArchive            -- Table containing archived custom snippets

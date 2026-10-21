@@ -1,0 +1,5 @@
+SELECT 
+replace(TargetEntity,'CustomProperties','') as [Target]
+,count(Field) as [Custom Property]
+FROM Orion.CustomProperty 
+group by targetentity

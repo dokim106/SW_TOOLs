@@ -1,0 +1,16 @@
+-- Query to retrieve NCM permissions and count of associated user accounts from Orion.UserSettings
+
+SELECT 
+  SettingValue AS [NCM Permissions],    -- NCM permission level for the user
+  COUNT(AccountID) AS [Total Accounts]  -- Count of accounts with the corresponding NCM permission
+
+FROM 
+  Orion.UserSettings                    -- Table containing user settings
+
+WHERE 
+  SettingName = 'NCM.NCMAccountRole'    -- Filter to get only NCM account roles
+  AND SettingValue IS NOT NULL          -- Ensure that the permission value is not null
+  AND SettingValue != ''                -- Ensure the permission value is not an empty string
+
+GROUP BY 
+  SettingValue                          -- Group by NCM permission to aggregate the count of accounts

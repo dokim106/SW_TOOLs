@@ -1,0 +1,31 @@
+SELECT
+    DISTINCT CASE
+        WHEN Name = 'Threshold.SubnetUsageWarning' THEN 'Warning'
+        ELSE 'Warning (Default)'
+    END AS [Threshold Level],
+    CASE
+        WHEN Value IS NULL THEN '60 %'
+        ELSE CONCAT(ToString(Value), ' %')
+    END AS [Threshold Value],
+'Subnet or supernet with IP address space percentage used above this level will appear with "Warning " status.' AS [Description]
+FROM
+    IPAM.Setting
+WHERE
+    Name = 'Threshold.SubnetUsageWarning'
+UNION
+ALL (
+    SELECT
+        DISTINCT CASE
+            WHEN Name = 'Threshold.SubnetUsageCritical' THEN 'Critical'
+            ELSE 'Critical (Default)'
+        END AS [Threshold Level],
+        CASE
+            WHEN Value IS NULL THEN '80 %'
+            ELSE CONCAT(ToString(Value), ' %')
+        END AS [Threshold Value],
+'Subnet or supernet with IP address space percentage used above this level will appear with "Critical " status.' AS [Description]
+    FROM
+        IPAM.Setting
+    WHERE
+        Name = 'Threshold.SubnetUsageCritical'
+)

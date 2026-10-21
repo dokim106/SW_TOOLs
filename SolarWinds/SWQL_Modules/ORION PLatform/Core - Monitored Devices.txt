@@ -1,0 +1,5 @@
+select 
+concat(vendor,' - ',machinetype) as [Vendor]
+,count(*) as [Count]
+from orion.nodes
+group by vendor, machinetype

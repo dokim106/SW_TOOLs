@@ -1,0 +1,14 @@
+SELECT
+CASE
+    WHEN Name = 'SCM.FimDriverWatchingEnabled' THEN '"Who Made Changes'
+END AS [Server Configuration Monitor Settings],
+CASE
+    WHEN DefaultValue = 'False' THEN 'Not Enabled'
+    ELSE 'Enabled'
+END AS [Setting],
+Description AS [Description]
+FROM
+    Orion.Setting
+WHERE
+    Name = 'SCM.FimDriverWatchingEnabled'
+

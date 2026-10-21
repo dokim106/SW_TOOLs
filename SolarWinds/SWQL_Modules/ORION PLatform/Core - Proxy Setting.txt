@@ -1,0 +1,6 @@
+SELECT
+case when value='system://default' then 'Use Default OS Settings'
+     when value='system://disabled' then 'Do not use an HTTP proxy'
+     when value like 'http%'       then 'Use the following settings'
+end as [Metric]
+, Value as [Value] FROM Orion.Setting where name='Orion.HttpProxy.Uri'

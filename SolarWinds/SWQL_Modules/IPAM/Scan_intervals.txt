@@ -1,0 +1,12 @@
+SELECT 
+    Grouptypetext AS [Type],
+    COUNT(GroupID) AS [Count],
+    CONCAT(TOSTRING(ScanInterval / 60), ' hrs') AS [Scan Interval]
+FROM 
+    IPAM.GroupReport
+WHERE 
+    ScanInterval > 60  -- Filter to include only intervals greater than 60 seconds (1 minute)
+    AND DisableAutoScanning <> 'true'  -- Exclude rows where auto scanning is disabled
+GROUP BY 
+    Grouptypetext, 
+    ScanInterval; 

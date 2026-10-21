@@ -1,0 +1,3 @@
+SELECT 'DPA Integration' as [Metric], case when count(*)>0 then 'Enabled' else 'Disabled' end as [v] FROM Orion.DPA.DpaServer
+
+union all (SELECT 'SEM Integration' as [c], case when count(*) >0 then 'Enabled' else 'Disabled' end as [v] FROM Orion.SEM.Nodes )

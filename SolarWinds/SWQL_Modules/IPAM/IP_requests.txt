@@ -1,0 +1,11 @@
+SELECT 
+    CASE
+        WHEN State = 2 THEN 'Pending'
+        WHEN State = 3 THEN 'Completed'
+        ELSE 'Unknown'
+    END AS [Status],
+    COUNT(*) AS [Count]
+FROM 
+    IPAM.IPRequests
+GROUP BY 
+    State;

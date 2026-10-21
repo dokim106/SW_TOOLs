@@ -1,0 +1,1 @@
+SELECT ServerName AS Name, ServerType AS Type, IP, MinutesSinceKeepAlive AS [Minutes Since Keep Alive], Elements, Nodes, Interfaces, Volumes, PollingCompletion AS [Polling Completion %] FROM Orion.Engines

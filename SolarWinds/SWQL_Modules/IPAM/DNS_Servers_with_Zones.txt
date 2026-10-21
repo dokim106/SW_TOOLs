@@ -1,0 +1,9 @@
+SELECT DISTINCT
+    server.DisplayName AS [DNS Server],
+    zone.DisplayName AS [DNS Zone]
+FROM 
+    Orion.Nodes AS n
+JOIN 
+    IPAM.DNSServer AS server ON server.NodeId = n.NodeID
+JOIN 
+    IPAM.DnsZone AS zone ON zone.NodeId = n.NodeID;
