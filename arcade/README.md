@@ -5,7 +5,7 @@ one command. It is separate from the DOOM bundle: its own folder on the server, 
 
 | | |
 |---|---|
-| Dashboard | **Arcade**, number **179**: `https://XXX.xxx.xxx.xxx/apps/platform/dashboard/xxx` (My Dashboards, then Arcade) |
+| Dashboard | **Arcade**, number **XXX**: `https://XXX.xxx.xxx.xxx/apps/platform/dashboard/xxx` (My Dashboards, then Arcade) |
 | Files on the server | `C:\CustomDash\arcade\` in the lab VM, served at `/customdash/arcade/` |
 | Canonical copy | XXXXXhostname `~/solarwinds-hud/bundles/arcade/` (run the commands below there) |
 | Games today | DOOM (default) and 2048 |
